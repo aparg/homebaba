@@ -4,7 +4,7 @@ import Breadcrumbs from "@/components/resale/Breadcrumbs";
 import CanadianCitiesShowcase from "@/components/resale/CanadianCitiesShowcase";
 
 const FiltersWithSalesList = dynamic(
-  () => import("@/components/FiltersWithSalesList"),
+  () => import("@/components/resale/FiltersWithSalesList"),
   {
     loading: () => (
       <div className="flex justify-center align-item-center">
