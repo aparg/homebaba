@@ -1,8 +1,4 @@
 "use client";
-import formatCurrency from "@/helpers/formatCurrency";
-import Nformatter from "@/helpers/Nformatter";
-import { priceFormatter } from "@/helpers/priceFormatter";
-import Link from "next/link";
 import React from "react";
 
 const PriceButton = ({ price }) => {
