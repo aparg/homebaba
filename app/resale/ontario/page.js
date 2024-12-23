@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { ImSpinner } from "react-icons/im";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import CanadianCitiesShowcase from "@/components/CanadianCitiesShowcase";
+import Breadcrumbs from "@/components/resale/Breadcrumbs";
+import CanadianCitiesShowcase from "@/components/resale/CanadianCitiesShowcase";
 
 const FiltersWithSalesList = dynamic(
   () => import("@/components/FiltersWithSalesList"),
