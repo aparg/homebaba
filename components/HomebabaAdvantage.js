@@ -1,0 +1,44 @@
+const HomebabaAdvantage = () => {
+  const images = [
+    "/homebaba-team/1.jpg",
+    "/homebaba-team/2.jpg",
+    "/homebaba-team/3.jpg",
+    "/homebaba-team/4.jpg",
+    "/homebaba-team/5.jpg",
+  ];
+
+  return (
+    <section className="py-12 md:py-16 px-6 md:px-4 max-w-7xl mx-auto">
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-2xl md:text-5xl tracking-tight font-extrabold leading-[1.2] md:leading-[1.2]  text-center mb-3">
+          The Homebaba Advantage - Always people at heart
+        </h2>
+        <p className="text-gray-600 text-sm md:text-lg max-w-2xl mx-auto">
+          Working hand in hand with leading Pre construction Homes, Condos
+          Developers & Industry Partners
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="relative aspect-[9/16] overflow-hidden rounded-lg"
+          >
+            <img
+              src={image}
+              alt={`Partner ${index + 1}`}
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8 md:mt-12 hidden md:block">
+        <img src="/branding-image.png" alt="" className="w-full" />
+      </div>
+    </section>
+  );
+};
+
+export default HomebabaAdvantage;
