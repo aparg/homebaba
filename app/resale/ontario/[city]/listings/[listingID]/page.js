@@ -64,7 +64,7 @@ const page = async ({ params }) => {
     { label: "Ontario", href: "/ontario" },
     { label: formattedSlug, href: generateURL({ cityVal: cityValue }) },
     {
-      label: `For ${main_data.TransactionType}`,
+      label: `${main_data.TransactionType}`,
       href: generateURL({
         cityVal: cityValue,
         saleLeaseVal: main_data?.TransactionType?.toLowerCase(),

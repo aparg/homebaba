@@ -17,7 +17,7 @@ const page = async ({ params }) => {
     if (Object.keys(saleLease).includes(data)) {
       saleLeaseValue = data;
     } else if (Object.keys(houseType).includes(data) && !type) {
-      type = houseType[data].name;
+      type = houseType[data]?.name;
     }
     if (saleLeaseValue && type) return;
   });
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }, parent) {
     if (Object.keys(saleLease).includes(data)) {
       saleLeaseValue = data;
     } else if (Object.keys(houseType).includes(data) && !type) {
-      type = houseType[data].name;
+      type = houseType[data]?.name;
     }
     if (saleLeaseValue && type) return;
   });
