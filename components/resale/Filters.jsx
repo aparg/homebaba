@@ -356,7 +356,11 @@ const CustomDropdown = ({
         ? selectedValues.filter((val) => val !== option)
         : [...selectedValues, option];
     } else {
-      newValues = [option];
+      newValues = [
+        Object.values(houseType).find((obj) => {
+          if (obj.name == option) return obj.value;
+        }).value,
+      ];
       setIsOpen(false);
     }
 
@@ -382,7 +386,10 @@ const CustomDropdown = ({
         `}
       >
         <span className="truncate">
-          {selectedValues.join(", ").replaceAll("_", " ")}
+          {
+            Object.values(houseType).find((obj) => obj.value == selectedValues)
+              .name
+          }
         </span>
         <FaChevronDown
           size={10}
@@ -459,88 +466,6 @@ const CustomDropdown = ({
 const IndividualFilter = (props) => {
   return <CustomDropdown {...props} />;
 };
-
-//slider for price
-// const PriceRangeFilter = ({ name, value, handleFilterChange, minMaxPrice }) => {
-//   const [price, setPrice] = useState({
-//     min: 0,
-//     max: 0,
-//   });
-
-//   const handlePriceChange = (inputName, value) => {
-//     const newPrice = {
-//       ...price,
-//       [inputName]: Number(value),
-//     };
-
-//     setPrice(newPrice);
-//     handleFilterChange(name, newPrice);
-//   };
-
-//   const valueToDisplay = useMemo(() => {
-//     if (price.min && !price.max) {
-//       return `Over $${price.min}`;
-//     } else if (price.min && price.max) {
-//       return `$${price.min} - $${price.max}`;
-//     } else {
-//       return "Price";
-//     }
-//   }, [price]);
-
-//   const handleRangeChange = ([min, max]) => {
-//     const newPrice = { min, max };
-//     setPrice(newPrice);
-//     handleFilterChange(name, newPrice);
-//   };
-
-//   useEffect(() => {
-//     const newPrice = {
-//       min: value?.min ?? 0,
-//       max: value?.max ?? 0,
-//     };
-//     setPrice(newPrice);
-//   }, [value]);
-
-//   return (
-//     <div className="price-range__slider">
-//       <Slider
-//         label="Price Range"
-//         step={50}
-//         minValue={minMaxPrice.min}
-//         maxValue={minMaxPrice.max}
-//         onChangeEnd={handleRangeChange}
-//         defaultValue={[minMaxPrice.min, minMaxPrice.max]}
-//         formatOptions={{
-//           style: "currency",
-//           currency: "CAD",
-//           minimumFractionDigits: 0,
-//           maximumFractionDigits: 0,
-//         }}
-//         classNames={{
-//           filler: "bg-primary-green",
-//         }}
-//         renderThumb={(props) => (
-//           <div
-//             {...props}
-//             className="bg-primary-green group p-1 top-1/2 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-//           >
-//             <span className="transition-transform shadow-small rounded-full w-3 h-3 block group-data-[dragging=true]:scale-80"></span>
-//           </div>
-//         )}
-//       />
-//       {(props) => {
-//         return (
-//           <div
-//             {...props}
-//             className="p-1 top-50 bg-primary-green border border-secondary rounded-circle shadow cursor-grab"
-//           >
-//             <span className="bg-primary-green shadow rounded-circle w-5 h-5 block" />
-//           </div>
-//         );
-//       }}
-//     </div>
-//   );
-// };
 
 const MoreFilter = ({
   washroomCountOptions,

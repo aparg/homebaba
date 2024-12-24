@@ -33,8 +33,8 @@ const FiltersWithSalesList = ({
     ]?.name || saleLease.sale.name;
 
   const houseTypeFilterVal =
-    Object.values(houseType).find((val) => val.name === requiredType)?.name ||
-    houseType.all.name;
+    Object.values(houseType).find((val) => val.name === requiredType)?.value ||
+    houseType.all.value;
 
   const initialState = {
     saleLease: saleLeaseFilterVal,

@@ -87,8 +87,6 @@ const page = async ({ params }) => {
     .join(" ");
 
   const imageURLs = await getImageUrls({ MLS: main_data?.ListingKey });
-  console.log(main_data?.ListingKey);
-  console.log(imageURLs);
   // const notes = await getNotes();
   return (
     <>

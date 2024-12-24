@@ -30,11 +30,9 @@ const SalesList = ({
 
   const _getMergedHouseType = (state) => {
     let mergedHouseType = [];
-    console.log(state);
     const selectedHouseType = Object.values(houseType).filter((type) =>
-      state.type.includes(type.name)
+      state.type.includes(type.value)
     );
-
     for (const type of selectedHouseType) {
       if (type.value === null) {
         mergedHouseType = null;

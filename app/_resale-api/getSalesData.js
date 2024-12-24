@@ -28,7 +28,6 @@ export const getSalesData = async (offset, limit, city, listingType) => {
     if (listingType) {
       filterQuery += ` and PropertySubType eq ${listingType}`;
     }
-    console.log(url);
     const res = await fetch(url, options);
     const data = await res.json();
     return data.value[0];
@@ -153,7 +152,6 @@ export const fetchDataFromMLS = async (listingID) => {
       "$query",
       `?${queriesArray.join("&")}`
     );
-    console.log(urlToFetchMLSDetail);
     const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
     const data = await resMLSDetail.json();
     return data.value[0];
@@ -180,7 +178,6 @@ export const fetchStatsFromMLS = async ({
     "$query",
     `?${queriesArray.join("&")}`
   );
-  console.log(urlToFetchMLSDetail);
   const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
   const data = await resMLSDetail.json();
   return data.results;
