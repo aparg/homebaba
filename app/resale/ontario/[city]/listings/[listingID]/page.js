@@ -100,7 +100,7 @@ const page = async ({ params }) => {
             }}
           />
           <div className="pt-md-3 pt-0 ">
-            <div className="sticky top-0 z-[999]">
+            <div className="sticky top-0 z-[998]">
               <Breadcrumbs items={breadcrumbItems} />
               {/* <Thumbnails setCurrentImageIndex={setCurrentImageIndex} /> */}
             </div>
