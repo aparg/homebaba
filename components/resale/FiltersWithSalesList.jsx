@@ -218,7 +218,7 @@ const FiltersWithSalesList = ({
           <div className="w-[20px] mx-auto">
             <ImSpinner size="sm" />
           </div>
-        ) : salesData.length > 0 ? (
+        ) : salesData?.length > 0 ? (
           <>
             {selected === 1 && <HotListings salesData={hotSales} />}
             <div

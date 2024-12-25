@@ -90,7 +90,7 @@ const SalesList = ({
     <>
       {salesData?.length > 0 ? (
         <>
-          {salesData.map((curElem, index) => {
+          {salesData?.map((curElem, index) => {
             return (
               <div key={curElem.ListingKey}>
                 <script

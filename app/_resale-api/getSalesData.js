@@ -24,7 +24,6 @@ export const getSalesData = async (offset, limit, city, listingType) => {
         Authorization: process.env.BEARER_TOKEN_FOR_API,
       },
     };
-
     if (listingType) {
       filterQuery += ` and PropertySubType eq ${listingType}`;
     }
@@ -51,15 +50,22 @@ export const getFilteredRetsData = async (queryParams) => {
         : ""
     }${
       queryParams.bed
-        ? `${queryParams.bed ? " and " : ""}Bedrooms eq ${queryParams.bed}`
+        ? `${
+            queryParams.bed ? " and " : ""
+          }BedroomsTotal eq ${queryParams.bed?.toFixed(3)}`
         : ""
     }`;
     const skipQuery = `${queryParams.offset}`;
     const limitQuery = `${queryParams.limit}`;
     let rangeQuery =
       queryParams.minListPrice || queryParams.washroom
-        ? `and ListPrice le ${queryParams.minListPrice} and Washrooms le ${queryParams.washroom}`
+        ? `and ListPrice ge ${
+            queryParams.minListPrice
+          } and BathroomsTotalInteger ge ${
+            queryParams.washroom?.toFixed(3) || Number(0).toFixed(3)
+          }`
         : "";
+
     if (queryParams.houseType) {
       const houseTypeQuery = ` and PropertySubType eq 'value'`;
       queryParams.houseType.forEach((param, index) => {
@@ -80,7 +86,7 @@ export const getFilteredRetsData = async (queryParams) => {
       selectQuery += `and Basement2=Sep Entrance`;
     }
     if (queryParams.maxListPrice > queryParams.minListPrice) {
-      rangeQuery += ` and ListPrice gt ${queryParams.maxListPrice}`;
+      rangeQuery += ` and ListPrice le ${queryParams.maxListPrice}`;
     }
 
     if (queryParams.priceDecreased) {
@@ -106,16 +112,20 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
+    console.log(url);
     const res = await fetch(url, options);
+
+    const data = await res.json();
     if (!res.ok) {
       // Check if the response is OK (status in the range 200-299)
-      throw new Error(`HTTP error! status: ${res.status}`);
+      throw new Error(
+        `HTTP error! status: ${res.status}. Error:${data.message}`
+      );
     }
-    const data = await res.json();
+
     return data.value;
   } catch (error) {
-    console.log(error);
-    throw new Error(`An error happened in getFilteredRetsData: ${error}`);
+    console.log(`An error happened in getFilteredRetsData: ${error}`);
   }
 };
 

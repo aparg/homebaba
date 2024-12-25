@@ -2,7 +2,7 @@ import { BASE_URL } from "..";
 export const residential = {
   properties: `${BASE_URL}/odata/Property$query`,
   photos: `${BASE_URL}/odata/Media?$filter=ResourceRecordKey eq 'MLS' and MediaType eq 'image/jpeg' and MediaStatus eq 'Active'`,
-  search: `${BASE_URL}/odata/Property?$filter=StreetName eq '$value' or PostalCode eq '$value' or CountyOrParish eq '$value'&$select=UnparsedAddress,CountyOrParish&$top=5`,
+  search: `${BASE_URL}/odata/Property?$filter=StreetName has '$value' or PostalCode has '$value' or CountyOrParish has '$value'&$select=UnparsedAddress,CountyOrParish&$top=5`,
   statistics: `https://rets.api.ca/residential/stats/$query`,
 };
 

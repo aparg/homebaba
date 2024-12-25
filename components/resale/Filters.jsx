@@ -114,6 +114,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         max: 0,
       };
     }
+    console.log(name, value);
     scrollToFilters();
     setFilterState({ ...newFilterState });
     fetchFilteredData(newFilterState);
@@ -311,11 +312,11 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         />
       </div>
 
-      <div className="rounded-full">
+      {/* <div className="rounded-full">
         <MoreFilter
           {...{ washroomCountOptions, additonalFilterChange, filterState }}
         />
-      </div>
+      </div> */}
     </>
   );
 };
