@@ -26,7 +26,7 @@ export const sendEmail = async ({ content, page = null, title = null }) => {
     swal("Message Failed", "Cannot send your message", "error");
   } else {
     swal(
-      `Thank You, ${content.name || ""}`,
+      `Thank You, ${content?.name || ""}`,
       "Please expect an email or call from us shortly",
       "Success"
     );

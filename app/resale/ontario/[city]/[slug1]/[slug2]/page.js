@@ -14,9 +14,9 @@ const page = async ({ params }) => {
     saleLeaseValue = params.slug2;
   }
   if (Object.keys(houseType).includes(params.slug1)) {
-    type = houseType[params.slug1].name;
+    type = houseType[params.slug1]?.name;
   } else if (Object.keys(houseType).includes(params.slug2)) {
-    type = houseType[params.slug2].name;
+    type = houseType[params.slug2]?.name;
   }
   const isValidSlug = saleLeaseValue || type;
   const city = params.city;

@@ -235,7 +235,6 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
             value={filterState.type}
             setFilterState={setFilterState}
             handleFilterChange={handleFilterChange}
-            // isMulti={true}
             isMulti={false}
             isMobileView={isMobileView}
             city={filterState.city}
@@ -386,10 +385,8 @@ const CustomDropdown = ({
         `}
       >
         <span className="truncate">
-          {
-            Object.values(houseType).find((obj) => obj.value == selectedValues)
-              .name
-          }
+          {Object.values(houseType).find((obj) => obj.value == selectedValues)
+            ?.name || "House Type"}
         </span>
         <FaChevronDown
           size={10}

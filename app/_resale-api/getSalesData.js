@@ -60,13 +60,16 @@ export const getFilteredRetsData = async (queryParams) => {
       queryParams.minListPrice || queryParams.washroom
         ? `and ListPrice le ${queryParams.minListPrice} and Washrooms le ${queryParams.washroom}`
         : "";
-
+    console.log("Housetype");
+    console.log(queryParams.houseType);
     if (queryParams.houseType) {
       const houseTypeQuery = ` and PropertySubType eq 'value'`;
       queryParams.houseType.forEach((param, index) => {
-        selectQuery += houseTypeQuery.replace("value", param);
-        if (index !== queryParams.houseType.length - 1) {
-          selectQuery += "";
+        if (param) {
+          selectQuery += houseTypeQuery.replace("value", param);
+          if (index !== queryParams.houseType.length - 1) {
+            selectQuery += "";
+          }
         }
       });
     }
@@ -105,6 +108,7 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
+    console.log(url);
     const res = await fetch(url, options);
     if (!res.ok) {
       // Check if the response is OK (status in the range 200-299)
@@ -113,6 +117,7 @@ export const getFilteredRetsData = async (queryParams) => {
     const data = await res.json();
     return data.value;
   } catch (error) {
+    console.log(error);
     throw new Error(`An error happened in getFilteredRetsData: ${error}`);
   }
 };
