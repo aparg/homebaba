@@ -91,9 +91,9 @@ const SearchOption = ({ suggestion, setSearchTerm }) => {
         JSON.parse(window.localStorage.getItem("searchValue")) || [];
       if (suggestion?.ListingKey) {
         const searchObj = JSON.stringify({
-          Address: suggestion?.Address,
-          Municipality: suggestion?.CountyOrParish,
-          MLS: suggestion?.ListingKey,
+          UnparsedAddress: suggestion?.UnparsedAddress,
+          CountyOrParish: suggestion?.CountyOrParish,
+          ListingKey: suggestion?.ListingKey,
         });
         searchesArray.unshift(searchObj);
         if (searchesArray.length > 3) searchesArray = searchesArray.slice(0, 3);
@@ -139,7 +139,7 @@ const SearchOption = ({ suggestion, setSearchTerm }) => {
           </div>
 
           <span className="ml-2 text-center">
-            {suggestion?.Address || suggestion.city}
+            {suggestion?.UnparsedAddress || suggestion.city}
           </span>
         </div>
       </div>

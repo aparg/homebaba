@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CgSearch } from "react-icons/cg";
-import { searchProperties } from "@/app/_resale-api/searchProperties";
+import { searchProperties } from "@/app/_resale-api/getSalesData";
 import debounce from "lodash.debounce";
 import Autosuggest from "./Autosuggest";
 import useDeviceView from "@/helpers/useDeviceView";
@@ -37,6 +37,7 @@ const ResaleSearchBar = ({
     );
     // return filteredCities;
     const filteredProperties = await searchProperties(searchTerm);
+    console.log(filteredProperties);
     // const addressArray = filteredProperties.map((property, idx) => {
     //   return property.Address;
     // });

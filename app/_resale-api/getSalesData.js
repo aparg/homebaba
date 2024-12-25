@@ -60,8 +60,6 @@ export const getFilteredRetsData = async (queryParams) => {
       queryParams.minListPrice || queryParams.washroom
         ? `and ListPrice le ${queryParams.minListPrice} and Washrooms le ${queryParams.washroom}`
         : "";
-    console.log("Housetype");
-    console.log(queryParams.houseType);
     if (queryParams.houseType) {
       const houseTypeQuery = ` and PropertySubType eq 'value'`;
       queryParams.houseType.forEach((param, index) => {
@@ -108,7 +106,6 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
-    console.log(url);
     const res = await fetch(url, options);
     if (!res.ok) {
       // Check if the response is OK (status in the range 200-299)
@@ -134,7 +131,7 @@ export const getImageUrls = async ({ MLS, thumbnailOnly = false }) => {
 
     let imageLink = residential.photos;
 
-    if (thumbnailOnly) imageLink += " and ImageSizeDescription eq 'Thumbnail'";
+    if (thumbnailOnly) imageLink += " and ImageSizeDescription eq 'Large'";
     else imageLink += " and ImageSizeDescription eq 'Largest'";
 
     const response = await fetch(imageLink.replace("MLS", MLS), options);
@@ -186,4 +183,18 @@ export const fetchStatsFromMLS = async ({
   const resMLSDetail = await fetch(urlToFetchMLSDetail, options);
   const data = await resMLSDetail.json();
   return data.results;
+};
+
+export const searchProperties = async (inputValue) => {
+  const response = await fetch(
+    residential.search.replaceAll("$value", inputValue),
+    {
+      method: "GET",
+      headers: {
+        Authorization: process.env.BEARER_TOKEN_FOR_API,
+      },
+    }
+  );
+  const searchedProperties = await response.json();
+  return searchedProperties.value;
 };

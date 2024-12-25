@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import TimeAgo from "@/helpers/TimeAgo";
+import TimeAgo from "./TimeAgo";
 import { residential } from "@/app/_resale-api/routes/fetchRoutes";
 import { houseType, saleLease } from "@/constant";
 import { generateURL } from "@/helpers/generateResaleURL";
@@ -9,10 +9,13 @@ import { generateURL } from "@/helpers/generateResaleURL";
 import Favorite from "./Favorite";
 import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
 import { getImageUrls } from "@/app/_resale-api/getSalesData";
+import { Spinner } from "@nextui-org/react";
+import Image from "next/image";
 
 const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
   // const [address, setAddress] = useState("");
-  const [imgUrl, setImgUrl] = useState("/noimage.webp");
+  const [loadingImage, setLoadingImage] = useState(false);
+  const [imgUrl, setImgUrl] = useState(null);
   const price = Number(curElem.ListPrice).toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -68,10 +71,11 @@ const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
     ) {
       setIsFavorite(true);
     }
-
+    setLoadingImage(true);
     getImageUrls({ MLS: curElem.ListingKey, thumbnailOnly: true }).then(
       (url) => {
         setImgUrl(url[0]);
+        setLoadingImage(false);
       }
     );
   }, []);
@@ -116,14 +120,21 @@ const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
                   small ? "h-44" : "h-52 sm:h-80"
                 } sm:h-80 relative z-10 rounded-t-2xl`}
               >
-                <img
-                  className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-t-2xl"
-                  src={imgUrl}
-                  width="900"
-                  height="800"
-                  alt="property image"
-                  // onError={handleImageError}
-                />
+                {loadingImage ? (
+                  <Spinner />
+                ) : (
+                  <img
+                    className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-t-2xl"
+                    src={imgUrl}
+                    width="900"
+                    height="800"
+                    alt="property image"
+                    onError={(e) => {
+                      console.log("Trigerring error");
+                      handleImageError(e);
+                    }}
+                  />
+                )}
 
                 {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}
               </div>

@@ -24,7 +24,7 @@ import PriceButton from "@/components/resale/PriceButton";
 import formatCurrency from "@/helpers/formatCurrency";
 import Carousel from "@/components/resale/Carousel";
 import { generateURL } from "@/helpers/generateResaleURL";
-import TimeAgo from "@/helpers/TimeAgo";
+import TimeAgo from "@/components/resale/TimeAgo";
 import { houseType } from "@/constant";
 
 // import { getNotes } from "@/helpers/getNotes";
