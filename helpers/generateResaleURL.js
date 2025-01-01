@@ -4,6 +4,7 @@ const houseTypeLinkObj = {};
 Object.values(houseType).forEach((elem) => {
   houseTypeLinkObj[elem.name.toLowerCase()] = elem.slug;
 });
+console.log(houseTypeLinkObj);
 export const generateURL = ({
   cityVal,
   houseTypeVal,
@@ -40,6 +41,9 @@ export const generateURL = ({
   // console.log(houseTypeLinkObj, houseType);
   if (houseType && !city) finalLink += "/homes/" + houseTypeLinkObj[houseType];
   if (houseType && city) finalLink += "/" + houseTypeLinkObj[houseType];
+
+  console.log(houseType, city);
+
   if (saleLeaseType && houseType) finalLink += "-for-" + saleLeaseType;
   if (saleLeaseType && !houseType) finalLink += "/homes-for-" + saleLeaseType;
 

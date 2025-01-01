@@ -44,12 +44,12 @@ import { generateURL } from "@/helpers/generateResaleURL";
 // import Dropdown from "./Dropdown";
 
 const bgColor = {
-  saleLease: "bg-primary-green",
-  priceDecreased: "bg-primary-green",
-  time: "bg-primary-green",
-  type: "bg-primary-green",
+  saleLease: "bg-black",
+  priceDecreased: "bg-black",
+  time: "bg-black",
+  type: "bg-black",
   minTimestampSql: "bg-[#eb7e6c]/1",
-  bed: "bg-primary-green",
+  bed: "bg-black",
 };
 
 const textColor = {
@@ -379,7 +379,7 @@ const CustomDropdown = ({
           ${isMobileView ? "px-1 gap-1 min-w-[40px]" : "min-w-[120px]"}
           ${
             selectedValues[0] !== defaultValue
-              ? `bg-primary-green text-white border-primary-green`
+              ? `bg-black text-white border-black`
               : "border-gray-300 bg-white "
           }
           hover:shadow-md transition-all text-center
@@ -445,7 +445,7 @@ const CustomDropdown = ({
                   text-sm cursor-pointer
                   ${
                     selectedValues.includes(option)
-                      ? "bg-gray-50 text-primary-green font-medium"
+                      ? "bg-gray-50 text-black font-medium"
                       : "text-gray-700"
                   }
                 `}
@@ -536,9 +536,7 @@ const MoreFilter = ({
                         _handleFilterChange("hasBasement", value)
                       }
                       classNames={{
-                        wrapper: cn(
-                          "group-data-[selected=true]:bg-primary-green"
-                        ),
+                        wrapper: cn("group-data-[selected=true]:bg-black"),
                       }}
                     >
                       Finished Basement
@@ -550,9 +548,7 @@ const MoreFilter = ({
                         _handleFilterChange("sepEntrance", value)
                       }
                       classNames={{
-                        wrapper: cn(
-                          "group-data-[selected=true]:bg-primary-green"
-                        ),
+                        wrapper: cn("group-data-[selected=true]:bg-black"),
                       }}
                     >
                       Separate Entrance
@@ -593,7 +589,7 @@ const MoreFilter = ({
                     additonalFilterChange(moreFilterState);
                     onClose();
                   }}
-                  className="w-50 dynamic bg-primary-green text-white"
+                  className="w-50 dynamic bg-black text-white"
                 >
                   Apply
                 </Button>
@@ -680,16 +676,16 @@ const PriceRangeFilterBottom = ({
             classNames={{
               base: "max-w-md slider gap-3",
               track: "bg-gray-100 border border-secondary",
-              filler: "bg-primary-green bg-gradient-to-r",
+              filler: "bg-black bg-gradient-to-r",
               value: "font-bold fs-6 text-white",
             }}
             renderThumb={(props) => {
               return (
                 <div
                   {...props}
-                  className="bg-primary-green group p-1 top-1/2 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
+                  className="bg-black group p-1 top-1/2 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
                 >
-                  <span className="bg-primary-green shadow rounded-full w-3 h-3 block" />
+                  <span className="bg-black shadow rounded-full w-3 h-3 block" />
                   {!props["data-pressed"] && (
                     <>
                       {props.index === 0 ? (
@@ -701,7 +697,7 @@ const PriceRangeFilterBottom = ({
                             fontSize: "11px",
                             color: "white",
                           }}
-                          className="bg-primary-green custom-range-thumb p-1 border-md"
+                          className="bg-black custom-range-thumb p-1 border-md"
                         >
                           {convertIntoCurrency(price.min)}
                         </span>
@@ -715,7 +711,7 @@ const PriceRangeFilterBottom = ({
                             fontSize: "11px",
                             color: "white",
                           }}
-                          className="bg-primary-green  custom-range-thumb p-1 border-md"
+                          className="bg-black  custom-range-thumb p-1 border-md"
                         >
                           {convertIntoCurrency(price.max)}
                         </span>
@@ -774,7 +770,7 @@ const IndividualFilterButton = ({
             key={index}
             className={`mx-[2px] px-1 sm:px-3 py-1 cursor-pointer text-nowrap text-xs sm:text-sm h-[28px] leading-[1.2rem] sm:leading-normal sm:h-[34px] flex justify-content-center align-items-center rounded-full hover:shadow-lg border-[2px] ${
               isActive(option)
-                ? `border-primary-green! text-white bg-primary-green`
+                ? `border-black! text-white bg-black`
                 : "border-gray-filter"
             }`}
             // onClick={() => handleClick(name, option)}
@@ -820,7 +816,7 @@ const IndividualFilterButtonNoLink = ({
             className={`mx-[2px] px-2 sm:px-3  sm:h-[34px] py-1 cursor-pointer text-nowrap flex justify-content-center align-items-center rounded-full hover:shadow-lg text-xs sm:text-sm
             ${
               activeFilter == option
-                ? `border-primary-green bg-primary-green text-white`
+                ? `border-black bg-black text-white`
                 : "border-[2px] border-gray-filter"
             }`}
             onClick={() => handleClick(name, option)}
@@ -850,9 +846,7 @@ const IndividualFilterNoOptions = ({
   return (
     <div
       className={`px-3 py-1 cursor-pointer text-nowrap text-small h-[34px] flex justify-content-center align-items-center rounded-full border-2 ${
-        isActive
-          ? "bg-primary-green text-white border-primary-green"
-          : "border-black"
+        isActive ? "bg-black text-white border-black" : "border-black"
       }`}
       onClick={() => handleClick(name, !value)}
       style={{ border: "2px solid #e5e7eb" }}
@@ -871,7 +865,7 @@ const IndividualFilterWithCancel = ({ name, value, handleFilterChange }) => {
       variant={value ? "solid" : "bordered"}
       onClick={() => handleFilterChange(name, !value)}
       classNames={{
-        base: value ? "bg-primary-green" : "default",
+        base: value ? "bg-black" : "default",
         content: value ? "text-white" : "text-dark",
         closeButton: value ? "text-white" : "text-dark",
       }}

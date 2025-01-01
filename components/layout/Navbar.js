@@ -14,6 +14,9 @@ import {
 import Link from "next/link";
 import { generateURL } from "@/helpers/generateResaleURL";
 import Dropdown from "../resale/Dropdown";
+import { usePathname } from "next/navigation";
+import citiesWithProvinces from "@/constant/cities";
+import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,93 +26,120 @@ const Navbar = () => {
     { href: "/blogs", label: "Blogs" },
     { href: "/contact", label: "Contact" },
   ];
-
+  const pathname = usePathname();
+  const cities = citiesWithProvinces.map((obj) => obj.city.toLowerCase());
+  console.log("pathname is " + pathname);
+  console.log(cities);
+  const cityName = cities.find((city) => !!pathname?.match(city));
+  console.log("*********");
+  console.log(cityName);
   const buyOpts = [
     /* {
-      name: "Semi-detached Homes for Sale",
+      name: "Semi-detached Homes for Sale"  +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({ houseTypeVal: "semiDetached" }),
     }, */
     {
-      name: "Semi Detached Homes for Sale",
+      name:
+        "Semi Detached Homes for Sale" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "semi detached",
         saleLeaseVal: "sale",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Detached Homes for Sale",
+      name:
+        "Detached Homes for Sale" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "detached",
         saleLeaseVal: "sale",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Townhomes for Sale",
+      name:
+        "Townhomes for Sale" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "town house",
         saleLeaseVal: "sale",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Duplex  Homes for Sale",
+      name:
+        "Duplex  Homes for Sale" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "duplex",
         saleLeaseVal: "sale",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Triplex Homes for Sale",
+      name:
+        "Triplex Homes for Sale" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "triplex",
         saleLeaseVal: "sale",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
   ];
 
   const rentOpts = [
     {
-      name: "Semi Detached Homes for Lease",
+      name:
+        "Semi Detached Homes for Lease" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "semi detached",
         saleLeaseVal: "lease",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Detached Homes for Lease",
+      name:
+        "Detached Homes for Lease" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "detached",
         saleLeaseVal: "lease",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Townhomes for Lease",
+      name:
+        "Townhomes for Lease" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "town house",
         saleLeaseVal: "lease",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Duplex  Homes for Lease",
+      name:
+        "Duplex  Homes for Lease" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "duplex",
         saleLeaseVal: "lease",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
     {
-      name: "Triplex Homes for Lease",
+      name:
+        "Triplex Homes for Lease" +
+        `${cityName && ` in ${capitalizeFirstLetter(cityName)}`}`,
       link: generateURL({
         houseTypeVal: "triplex",
         saleLeaseVal: "lease",
-        // cityVal: cityName,
+        cityVal: cityName || null,
       }),
     },
   ];
@@ -148,13 +178,13 @@ const Navbar = () => {
       <div className="hidden lg:flex items-center space-x-6">
         <Dropdown
           name="Rent Resale Properties"
-          // text={isSticky || !isHomePage ? "black" : "white"}
+          text={"red"}
           options={rentOpts}
           width="auto"
         />
         <Dropdown
           name="Buy Resale Properties"
-          // text={isSticky || !isHomePage ? "black" : "white"}
+          text={"red"}
           options={buyOpts}
           width="auto"
         />
@@ -201,13 +231,13 @@ const Navbar = () => {
             <div className="flex flex-col gap-4 mt-8">
               <Dropdown
                 name="Rent Resale Properties"
-                // text={isSticky || !isHomePage ? "black" : "white"}
+                text={"red"}
                 options={rentOpts}
                 width="auto"
               />
               <Dropdown
                 name="Buy Resale Properties"
-                // text={isSticky || !isHomePage ? "black" : "white"}
+                text={"red"}
                 options={buyOpts}
                 width="auto"
               />

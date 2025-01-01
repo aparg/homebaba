@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { FaArrowDown, FaChevronDown } from "react-icons/fa";
 
-const Dropdown = ({ name, options, width = "25rem" }) => {
+const Dropdown = ({ name, options, width = "25rem", text }) => {
   const [shown, setShown] = useState(false);
   const dropdownRef = useRef(null);
   let timeoutId = useRef(null);
@@ -38,7 +38,7 @@ const Dropdown = ({ name, options, width = "25rem" }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="flex ">
+        <div className="flex text-red-500">
           {name}
           <span className="ml-1 mt-2">
             <FaChevronDown size={8} />
