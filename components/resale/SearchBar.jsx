@@ -37,7 +37,6 @@ const ResaleSearchBar = ({
     );
     // return filteredCities;
     const filteredProperties = await searchProperties(searchTerm);
-    console.log(filteredProperties);
     // const addressArray = filteredProperties.map((property, idx) => {
     //   return property.Address;
     // });

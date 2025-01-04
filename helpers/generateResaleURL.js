@@ -42,8 +42,6 @@ export const generateURL = ({
   if (houseType && !city) finalLink += "/homes/" + houseTypeLinkObj[houseType];
   if (houseType && city) finalLink += "/" + houseTypeLinkObj[houseType];
 
-  console.log(houseType, city);
-
   if (saleLeaseType && houseType) finalLink += "-for-" + saleLeaseType;
   if (saleLeaseType && !houseType) finalLink += "/homes-for-" + saleLeaseType;
 

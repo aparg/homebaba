@@ -5,7 +5,7 @@ import { commercial, residential } from "./routes/fetchRoutes";
 export const getSalesData = async (offset, limit, city, listingType) => {
   try {
     let filterQuery = `${
-      city && `CountyOrParish eq '${city || ""}' and `
+      city && `contains(City,'${city || ""}') and `
     }TransactionType eq 'For Sale'`;
     // const lowriseOnly = `TypeOwnSrch='.S.',TypeOwnSrch='.D.',TypeOwnSrch='.A.',TypeOwnSrch='.J.',TypeOwnSrch='.K.'`;
     const queriesArray = [
@@ -29,7 +29,7 @@ export const getSalesData = async (offset, limit, city, listingType) => {
     }
     const res = await fetch(url, options);
     const data = await res.json();
-    return data.value[0];
+    return data.value;
   } catch (error) {
     console.error(error);
     throw new Error(`An error happened in getSalesData: ${error}`);
@@ -41,7 +41,7 @@ export const getFilteredRetsData = async (queryParams) => {
   try {
     //all the necessary queries possible
     let selectQuery = `${
-      queryParams.city ? `CountyOrParish eq '${queryParams.city}'` : ""
+      queryParams.city ? `contains(City,'${queryParams.city || ""}')` : ""
     }${
       queryParams.saleLease
         ? `${queryParams.city ? " and " : ""}TransactionType eq '${
