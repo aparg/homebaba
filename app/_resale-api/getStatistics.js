@@ -13,9 +13,21 @@ const firstDayLastMonth = () => {
   return firstDayLastMonth;
 };
 
+const lastDayLastMonth = () => {
+  const lastMonth = new Date();
+  lastMonth.setMonth(lastMonth.getMonth());
+  const lastDayLastMonth = new Date(
+    lastMonth.getFullYear(),
+    lastMonth.getMonth(),
+    0
+  ).toISOString();
+  return lastDayLastMonth;
+};
+
+console.log(firstDayLastMonth(), lastDayLastMonth());
 export const getStatistics = async ({ city, propertyType, sold = false }) => {
   try {
-    let filterClause = `contains(City,'${city}') and OriginalEntryTimestamp ge ${firstDayLastMonth()} and TransactionType eq 'For Sale' `;
+    let filterClause = `contains(City,'${city}') and OriginalEntryTimestamp ge ${firstDayLastMonth()} and OriginalEntryTimestamp le ${lastDayLastMonth()} and TransactionType eq 'For Sale' `;
     if (propertyType) {
       filterClause += ` and PropertySubType eq '${propertyType}'`;
     }

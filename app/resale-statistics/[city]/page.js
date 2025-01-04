@@ -51,17 +51,23 @@ const page = async ({ params }) => {
         //   zIndex: -1,
         // }}
       />
-      <div className="flex">
+      <div className="flex items-center">
         <img src="/maple-leaf.svg" className="w-4 h-4 mr-2"></img>
-        <h2 className="tracking-wider font-semibold uppercase">
+        <h2 className="tracking-wide font-semibold uppercase text-lg">
           HOMEBABA DATA INTELLIGENCE
         </h2>
       </div>
-      <h1 className="font-bold my-4 text-3xl">
-        Property Statistics for {capitalizeFirstLetter(params?.city)} for last
-        one month
-      </h1>
-      <table className="min-w-full bg-white border border-gray-300">
+
+      <div className="my-6">
+        <h2 className="tracking-wider font-light uppercase text-4xl text-red-500">
+          {params?.city}
+        </h2>
+        <p className="tracking-tighter font-thin uppercase text-3xl mt-2">
+          {lastMonthName}, {new Date().getFullYear()}
+        </p>
+      </div>
+      {/* <h1 className="font-bold my-4 text-3xl">Property Statistics one month</h1> */}
+      <table className="min-w-full bg-white border border-gray-300 my-10">
         <thead>
           <tr className="bg-gray-200 text-gray-800 uppercase text-sm leading-normal">
             <th className="py-3 px-6 border-b border-gray-300 text-left">
@@ -90,20 +96,25 @@ const page = async ({ params }) => {
           ))}
         </tbody>
       </table>
-      <p className="mt-8 text-lg">
+      <ul className="mt-8 text-lg list-disc list-inside">
         {/* Last month's data */}
-        Total properties listed from {lastMonthName}:{" "}
-        <span className="text-black font-bold">
-          {totalPropertiesCount.totalCount}
-        </span>
-      </p>
-      <p className="mt-1 text-lg">
-        {/* Last month's data */}
-        Total properties listed from {lastMonthName}:{" "}
-        <span className="text-black font-bold">
-          {totalSoldCount.totalCount}
-        </span>
-      </p>
+        <li className="mb-2">
+          <span className="font-semibold uppercase text-sm tracking-wider">
+            Total Homes listed:
+          </span>{" "}
+          <span className="text-black font-bold text-sm tracking-wide">
+            {totalPropertiesCount.totalCount}
+          </span>
+        </li>
+        <li>
+          <span className="font-semibold uppercase text-sm tracking-wider">
+            Total Homes Sold:
+          </span>{" "}
+          <span className="text-black font-bold text-sm tracking-wide">
+            {totalSoldCount.totalCount}
+          </span>
+        </li>
+      </ul>
     </div>
   );
 };
