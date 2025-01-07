@@ -3,6 +3,7 @@ import { getStatistics } from "../../_resale-api/getStatistics";
 import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 import { houseType } from "@/constant";
 import { getSalesData } from "@/app/_resale-api/getSalesData";
+import formatCurrency from "@/helpers/formatCurrency";
 
 const page = async ({ params }) => {
   const propertyStats = {};
@@ -89,7 +90,7 @@ const page = async ({ params }) => {
             >
               <td className="py-3 px-6 text-left">{propertyType}</td>
               <td className="py-3 px-6 text-left">
-                ${stats.average.toFixed(2)}
+                {formatCurrency(stats.average.toFixed(2))}
               </td>
               <td className="py-3 px-6 text-left">{stats.totalCount}</td>
             </tr>
