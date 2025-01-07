@@ -180,6 +180,21 @@ const FiltersWithSalesList = ({
     ? "Homes"
     : "";
 
+  const getTitle = () => {
+    return (
+      <>
+        {[
+          capitalizeFirstLetter(requiredType),
+          homeText,
+          capitalizeFirstLetter(saleLeaseVal).toLowerCase() == "lease"
+            ? "for Rent"
+            : "for Sale",
+        ].join(" ") + " "}{" "}
+        in
+        {city ? ` ${capitalizeFirstLetter(city)}` : ""}
+      </>
+    );
+  };
   return (
     <>
       <div className="">
@@ -188,13 +203,7 @@ const FiltersWithSalesList = ({
             isMobileView ? "pt-2" : "pt-2"
           }`}
         >
-          100+{" "}
-          {[
-            capitalizeFirstLetter(requiredType),
-            homeText,
-            "for " + capitalizeFirstLetter(saleLeaseVal),
-          ].join(" ") + " "}{" "}
-          {city ? ` | ${capitalizeFirstLetter(city)}` : ""} | Homebaba.ca
+          100+ {getTitle()} | Homebaba.ca
         </h1>
         <h2
           className="text-sm mb-5 mt-1 text-center sm:text-left"

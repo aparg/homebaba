@@ -76,19 +76,26 @@ const HeroSection = () => {
 
           {/* City Links */}
           <div className="flex flex-wrap justify-center gap-0 md:gap-1 px-4 md:px-0 max-w-2xl mx-auto">
-            {cities.map((city) => (
-              <Link
-                key={city}
-                href={
-                  isPreconstruction
-                    ? `/${city.toLowerCase()}`
-                    : isResale && generateURL({ cityVal: city.toLowerCase() })
-                }
-                className="text-xs md:text-xs text-gray-700 hover:text-gray-900 underline-offset-4 underline px-1.5 md:px-2 py-0.5 md:py-1"
-              >
-                {city}
-              </Link>
-            ))}
+            {isPreconstruction &&
+              cities.map((city) => (
+                <Link
+                  key={city}
+                  href={`/${city.toLowerCase()}`}
+                  className="text-xs md:text-xs text-gray-700 hover:text-gray-900 underline-offset-4 underline px-1.5 md:px-2 py-0.5 md:py-1"
+                >
+                  {city}
+                </Link>
+              ))}
+            {isResale &&
+              cities.map((city) => (
+                <Link
+                  key={city}
+                  href={generateURL({ cityVal: city.toLowerCase() })}
+                  className="text-xs md:text-xs text-gray-700 hover:text-gray-900 underline-offset-4 underline px-1.5 md:px-2 py-0.5 md:py-1"
+                >
+                  {city}
+                </Link>
+              ))}
           </div>
         </div>
 

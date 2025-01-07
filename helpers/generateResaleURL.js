@@ -4,7 +4,6 @@ const houseTypeLinkObj = {};
 Object.values(houseType).forEach((elem) => {
   houseTypeLinkObj[elem.name.toLowerCase()] = elem.slug;
 });
-console.log(houseTypeLinkObj);
 export const generateURL = ({
   cityVal,
   houseTypeVal,
@@ -16,6 +15,7 @@ export const generateURL = ({
     isLocalStorageAvailable() &&
     JSON.parse(localStorage.getItem("filterState"));
   const city = cityVal?.toLowerCase().replaceAll(" ", "-");
+  // const storedFilterType = Object;
   let houseType =
     houseTypeVal?.toLowerCase() || filterState?.type?.toLowerCase() || null;
   if (houseType == "house type") {
@@ -37,13 +37,10 @@ export const generateURL = ({
   if (city) finalLink += "/" + city;
 
   if (!houseType && !saleLeaseType) return finalLink + "/homes-for-sale";
-
-  // console.log(houseTypeLinkObj, houseType);
   if (houseType && !city) finalLink += "/homes/" + houseTypeLinkObj[houseType];
-  if (houseType && city) finalLink += "/" + houseTypeLinkObj[houseType];
-
+  if (houseType && city)
+    finalLink += "/" + (houseTypeLinkObj[houseType] || "homes");
   if (saleLeaseType && houseType) finalLink += "-for-" + saleLeaseType;
   if (saleLeaseType && !houseType) finalLink += "/homes-for-" + saleLeaseType;
-
   return finalLink;
 };

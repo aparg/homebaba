@@ -41,7 +41,7 @@ export const getFilteredRetsData = async (queryParams) => {
   try {
     //all the necessary queries possible
     let selectQuery = `${
-      queryParams.city ? `contains(City,'${queryParams.city || ""}')` : ""
+      queryParams.city ? `contains(City,'${queryParams.city}')` : ""
     }${
       queryParams.saleLease
         ? `${queryParams.city ? " and " : ""}TransactionType eq '${
