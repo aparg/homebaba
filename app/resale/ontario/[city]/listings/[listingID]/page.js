@@ -60,14 +60,19 @@ const page = async ({ params }) => {
   //   listingIDValue,
   //   parseInt(main_data?.PhotoCount)
   // );
+  const propertyTypeName = Object.values(houseType).find(
+    (obj) =>
+      obj?.value?.toLowerCase() == main_data?.PropertySubType?.toLowerCase()
+  )?.name;
   const breadcrumbItems = [
     { label: "Ontario", href: "/ontario" },
     { label: formattedSlug, href: generateURL({ cityVal: cityValue }) },
     {
-      label: `${main_data.TransactionType}`,
+      label: `${main_data.TransactionType} (${propertyTypeName || ""})`,
       href: generateURL({
         cityVal: cityValue,
         saleLeaseVal: main_data?.TransactionType?.toLowerCase(),
+        houseTypeVal: propertyTypeName?.toLowerCase() || null,
       }),
     },
     {
@@ -100,12 +105,12 @@ const page = async ({ params }) => {
             }}
           />
           <div className="pt-md-3 pt-0 ">
-            <div className="sticky top-0 z-[998]">
+            <div className="sticky top-[3.7rem] z-[1000]">
               <Breadcrumbs items={breadcrumbItems} />
               {/* <Thumbnails setCurrentImageIndex={setCurrentImageIndex} /> */}
             </div>
             <section className="padding-top w-full text-sm flex flex-col items-center justify-center gy-2 relative">
-              <div className="hidden sm:block relative">
+              <div className="hidden sm:block relative w-full">
                 <Gallery data={imageURLs} />
                 <div className="space-x-2 order-2 sm:order-1 absolute bottom-2 left-2">
                   <button className="bg-[#CC0B0B] p-1 text-white text-xs font-bold mt-1 mb-2 sm:my-0 w-fit-content rounded-md">
@@ -139,9 +144,7 @@ const page = async ({ params }) => {
                     id="contact"
                   >
                     <BookShowingForm
-                      address={
-                        address + `, ${main_data?.CountyOrParish}, Ontario`
-                      }
+                      address={address + `, ${main_data?.City}, Ontario`}
                     ></BookShowingForm>
                   </div>
                   <div className="mt-24 mb-10 col-span-4">
@@ -153,7 +156,7 @@ const page = async ({ params }) => {
                 <section className="additonal__listing w-full mx-auto mt-24">
                   <PropertyDisplaySection
                     title={`Similar Homes nearby in ${
-                      main_data?.CountyOrParish || "Ontario"
+                      main_data?.City || "Ontario"
                     }`}
                     subtitle={`Check out 100+ listings near this property. Listings updated daily`}
                     exploreAllLink={generateURL({

@@ -3,6 +3,7 @@ import React, { useState, useMemo, useEffect, useRef } from "react";
 //CONSTANT
 import useDeviceView from "@/helpers/useDeviceView";
 import ResaleCard from "./ResaleCard";
+import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 
 const plural = {
   Retail: " Businesses",
@@ -11,7 +12,7 @@ const plural = {
   Land: "s",
   Business: "es",
 };
-const HotListings = ({ salesData }) => {
+const HotListings = ({ salesData, city = null }) => {
   const scrollRef = useRef(null); //used to hold scroll value
   // const formattedCity = city ? city.toLowerCase() : undefined;
   // const [salesData, setSalesData] = useState([]);
@@ -39,11 +40,13 @@ const HotListings = ({ salesData }) => {
     >
       <div className="w-full flex flex-row justify-between">
         <h3
-          className={`text-2xl font-bold mb-1 text-center sm:text-left ${
+          className={`text-lg sm:text-2xl font-bold mb-1 text-center sm:text-left px-2 sm:px-0 ${
             isMobileView ? "pt-3" : "pt-3"
           }`}
         >
-          Newest Arrival - Low rise homes listed for sale in past 24 hours
+          Newest Arrival -{" "}
+          {city ? `${capitalizeFirstLetter(city)} homes` : "Homes"} listed for
+          sale in past 24 hours
         </h3>
       </div>
       {/* <div className="w-full absolute top-[-50px] z-[999]">

@@ -186,7 +186,7 @@ const FiltersWithSalesList = ({
         {[
           capitalizeFirstLetter(requiredType),
           homeText,
-          capitalizeFirstLetter(saleLeaseVal).toLowerCase() == "lease"
+          capitalizeFirstLetter(saleLeaseVal)?.toLowerCase() == "for lease"
             ? "for Rent"
             : "for Sale",
         ].join(" ") + " "}{" "}
@@ -217,7 +217,7 @@ const FiltersWithSalesList = ({
         </h2>
 
         <div
-          className="flex sticky top-0 z-50 bg-white items-center w-full flex-wrap overflow-visible justify-center sm:justify-normal"
+          className="flex sticky top-[4rem] z-50 bg-white items-center w-full flex-wrap overflow-visible justify-center sm:justify-normal"
           id="filter"
         >
           <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
@@ -229,7 +229,7 @@ const FiltersWithSalesList = ({
           </div>
         ) : salesData?.length > 0 ? (
           <>
-            {selected === 1 && <HotListings salesData={hotSales} />}
+            {selected === 1 && <HotListings salesData={hotSales} city={city} />}
             <div
               className={`${
                 isMobileView ? "pt-1" : "pt-3"
