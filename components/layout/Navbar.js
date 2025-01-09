@@ -17,6 +17,7 @@ import Dropdown from "../resale/Dropdown";
 import { usePathname } from "next/navigation";
 import citiesWithProvinces from "@/constant/cities";
 import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
+import ResaleSearchBar from "../resale/SearchBar";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -145,7 +146,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-between px-4 py-3 bg-white sticky top-0 z-[999] shadow-nav">
+    <nav className="flex items-center justify-between px-4 py-3 bg-white sticky top-0 z-[999] shadow-nav h-16">
       {/* Logo Section */}
       <div className="flex items-center">
         <span className="text-sm md:text-2xl font-bold">homebaba</span>
@@ -167,13 +168,16 @@ const Navbar = () => {
 
       {/* Search Section - Always visible */}
       <div className="flex-1 max-w-xs mx-4 me-auto hidden sm:block">
-        <SearchBar
-          padding="py-3 md:py-5"
-          width="w-[200px] md:w-[350px]"
-          shadow="shadow-none border"
-        />
+        {pathname.includes("/resale") ? (
+          <ResaleSearchBar small={true} />
+        ) : (
+          <SearchBar
+            padding="py-1 md:py-5 h-9"
+            width="w-[200px] md:w-[200px]"
+            shadow="shadow-none border"
+          />
+        )}
       </div>
-
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center space-x-6">
         <Dropdown
@@ -211,11 +215,15 @@ const Navbar = () => {
         {/* Search toggle for mobile */}
 
         <div className="flex-1 max-w-xs mx-4 me-auto sm:hidden">
-          <SearchBar
-            padding="py-1 md:py-5 h-9"
-            width="w-[200px] md:w-[200px]"
-            shadow="shadow-none border"
-          />
+          {pathname.includes("/resale") ? (
+            <ResaleSearchBar />
+          ) : (
+            <SearchBar
+              padding="py-1 md:py-5 h-9"
+              width="w-[200px] md:w-[200px]"
+              shadow="shadow-none border"
+            />
+          )}
         </div>
 
         <Sheet>

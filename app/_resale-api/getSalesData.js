@@ -1,4 +1,5 @@
 "use server";
+import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 import { commercial, residential } from "./routes/fetchRoutes";
 // import { houseType, saleLease } from "@/constant";
 
@@ -197,7 +198,7 @@ export const fetchStatsFromMLS = async ({
 
 export const searchProperties = async (inputValue) => {
   const response = await fetch(
-    residential.search.replaceAll("$value", inputValue),
+    residential.search.replaceAll("$value", capitalizeFirstLetter(inputValue)),
     {
       method: "GET",
       headers: {

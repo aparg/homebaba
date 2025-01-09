@@ -14,6 +14,7 @@ const ResaleSearchBar = ({
   const [displaySuggestions, setDisplaySuggestions] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { isMobileView } = useDeviceView();
   // Debouncing
   const handleChange = async (value) => {
@@ -21,7 +22,11 @@ const ResaleSearchBar = ({
   };
 
   const debouncedResults = useMemo(() => {
-    return debounce(async (value) => await handleChange(value), 100);
+    return debounce(async (value) => {
+      setLoading(true);
+      await handleChange(value);
+      setLoading(false);
+    }, 10);
   }, []);
 
   useEffect(() => {
@@ -36,7 +41,9 @@ const ResaleSearchBar = ({
       data.city.toLowerCase().includes(inputValueLowerCase)
     );
     // return filteredCities;
+    // setLoading(true);
     const filteredProperties = await searchProperties(searchTerm);
+    // setLoading(false);
     // const addressArray = filteredProperties.map((property, idx) => {
     //   return property.Address;
     // });
@@ -163,6 +170,7 @@ const ResaleSearchBar = ({
             suggestions={suggestions}
             numberOfSuggestions={numberOfSuggestions}
             setSearchTerm={setSearchTerm}
+            loadingSuggestions={loading}
           />
         )}
       </div>

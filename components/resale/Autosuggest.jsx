@@ -3,13 +3,14 @@ import { generateURL } from "@/helpers/generateResaleURL";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { CSSTransition, Transition } from "react-transition-group";
-import { CgPin } from "react-icons/cg";
+import { CgPin, CgSpinner } from "react-icons/cg";
+import FadeLoader from "react-spinners/FadeLoader";
 
 const Autosuggest = ({
   displaySuggestions,
   searchTerm,
   suggestions,
-
+  loadingSuggestions,
   numberOfSuggestions,
   setSearchTerm,
 }) => {
@@ -39,17 +40,24 @@ const Autosuggest = ({
       </div>
       {searchTerm && suggestions.length > 0 ? (
         <section className="my-1">
-          <div>
-            {suggestions.slice(0, numberOfSuggestions).map((suggestion) => {
-              return (
-                <SearchOption
-                  suggestion={suggestion}
-                  setSearchTerm={setSearchTerm}
-                  key={suggestion?.ListingKey || suggestion?.city}
-                />
-              );
-            })}
-          </div>
+          {loadingSuggestions ? (
+            <div className="flex justify-center">
+              <FadeLoader radius={2} />
+            </div>
+          ) : (
+            <div>
+              {suggestions.slice(0, numberOfSuggestions).map((suggestion) => {
+                return (
+                  <SearchOption
+                    suggestion={suggestion}
+                    setSearchTerm={setSearchTerm}
+                    key={suggestion?.ListingKey || suggestion?.city}
+                  />
+                );
+              })}
+            </div>
+          )}
+
           <span className="text-gray-700"></span>
         </section>
       ) : (
