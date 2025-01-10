@@ -29,11 +29,7 @@ const Navbar = () => {
   ];
   const pathname = usePathname();
   const cities = citiesWithProvinces.map((obj) => obj.city.toLowerCase());
-  console.log("pathname is " + pathname);
-  console.log(cities);
   const cityName = cities.find((city) => !!pathname?.match(city));
-  console.log("*********");
-  console.log(cityName);
   const buyOpts = [
     /* {
       name: "Semi-detached Homes for Sale"  +

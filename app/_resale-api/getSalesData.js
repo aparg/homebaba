@@ -41,8 +41,6 @@ export const getFilteredRetsData = async (queryParams) => {
   // const lowriseOnly = `TypeOwnSrch='.S.',TypeOwnSrch='.D.',TypeOwnSrch='.A.',TypeOwnSrch='.J.',TypeOwnSrch='.K.'`;
   try {
     //all the necessary queries possible
-    console.log("BED COUNT");
-    console.log(queryParams.bed);
     let selectQuery = `${
       queryParams.city ? `contains(City,'${queryParams.city}')` : ""
     }${
@@ -108,6 +106,7 @@ export const getFilteredRetsData = async (queryParams) => {
         `?$filter=${selectQuery} ${rangeQuery}&$skip=${skipQuery}&$top=${limitQuery}&$orderby=OriginalEntryTimestamp desc`
       );
     }
+    console.log(url);
     const options = {
       method: "GET",
       headers: {
@@ -115,7 +114,6 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
-    console.log(url);
     const res = await fetch(url, options);
 
     const data = await res.json();

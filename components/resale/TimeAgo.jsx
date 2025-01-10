@@ -45,7 +45,6 @@ function TimeAgo({ modificationTimestamp }) {
     // Update the state with the calculated time ago string
     setTimeAgo(timeAgoString);
   }, [modificationTimestamp]);
-  console.log(modificationTimestamp.toLocaleString("en-US"));
   return <>{timeAgo}</>;
 }
 

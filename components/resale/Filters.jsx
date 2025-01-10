@@ -74,7 +74,6 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
     .map((item) => item.name);
   //options for house type
 
-  console.log(bedCountOptions);
   const houseTypeOptions = Object.values(houseType)
     .filter((item) => item.value)
     .map((item) => item.name);
@@ -108,7 +107,6 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
 
   const handleFilterChange = (name, value) => {
     const newFilterState = { ...filterState };
-    console.log(name, value);
     newFilterState[name] = value;
     if (name === "saleLease") {
       //reset the price filter
@@ -117,7 +115,6 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         max: 0,
       };
     }
-    console.log(name, value);
     scrollToFilters();
     setFilterState({ ...newFilterState });
     fetchFilteredData(newFilterState);
@@ -125,7 +122,6 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
 
   const handlePriceChange = (name, value) => {
     const newFilterState = { ...filterState };
-    console.log(value);
     const priceRange =
       filterState.saleLease == saleLease.sale.name
         ? priceRangesSaleProperties[value]
@@ -329,7 +325,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           }
           defaultValue={null}
           name="priceRange"
-          value={filterState.type}
+          value={"Price Range"}
           setFilterState={setFilterState}
           handleFilterChange={handlePriceChange}
           isMulti={false}
@@ -395,7 +391,6 @@ const CustomDropdown = ({
           }).value,
         ];
       } else {
-        console.log(option);
         newValues = [
           Object.keys(filterObj).find((keyVal) => {
             if (keyVal == option) return filterObj[keyVal];
@@ -404,7 +399,6 @@ const CustomDropdown = ({
       }
       setIsOpen(false);
     }
-    console.log(newValues);
     setSelectedValues(newValues);
     handleFilterChange(name, newValues.join(", ").replaceAll("_", " "));
   };
@@ -427,7 +421,6 @@ const CustomDropdown = ({
         `}
       >
         <span className="truncate">
-          {console.log(selectedValues)}
           {name != "priceRange"
             ? Object.values(filterObj).find(
                 (obj) => obj.value == selectedValues
@@ -852,7 +845,6 @@ const IndividualFilterButtonNoLink = ({
 
   return (
     <div className="inline-flex sm:justify-normal justify-center sm:mr-4 flex-wrap gap-y-2 py-2 sm:py-0">
-      {console.log(activeFilter)}
       {options.map((option, index) => {
         return (
           <div

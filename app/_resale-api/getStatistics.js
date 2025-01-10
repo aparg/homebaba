@@ -24,7 +24,6 @@ const lastDayLastMonth = () => {
   return lastDayLastMonth;
 };
 
-console.log(firstDayLastMonth(), lastDayLastMonth());
 export const getStatistics = async ({ city, propertyType, sold = false }) => {
   try {
     let filterClause = `contains(City,'${city}') and OriginalEntryTimestamp ge ${firstDayLastMonth()} and OriginalEntryTimestamp le ${lastDayLastMonth()} and TransactionType eq 'For Sale' `;
@@ -32,7 +31,6 @@ export const getStatistics = async ({ city, propertyType, sold = false }) => {
       filterClause += ` and PropertySubType eq '${propertyType}'`;
     }
 
-    console.log(filterClause);
     const response = await fetch(
       `${BASE_URL}/odata/Property?$count=true&$filter=${filterClause}&$select=ListPrice`,
       {
