@@ -189,7 +189,10 @@ export const washroomCount = {
 
 export const priceRangesSaleProperties = {
   "$0 - 500k": { min: 0, max: 500000 },
-  "$500k-$999k": { min: 500000, max: 999000 },
+  "$500k-$600k": { min: 500000, max: 999000 },
+  "$600k-$700k": { min: 600000, max: 700000 },
+  "$700k-$800k": { min: 700000, max: 800000 },
+  "800k - 1mil": { min: 800000, max: 1000000 },
   "1mil - 1.5mil": { min: 1000000, max: 1500000 },
 };
 

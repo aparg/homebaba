@@ -125,6 +125,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
 
   const handlePriceChange = (name, value) => {
     const newFilterState = { ...filterState };
+    console.log(value);
     const priceRange =
       filterState.saleLease == saleLease.sale.name
         ? priceRangesSaleProperties[value]
@@ -303,8 +304,8 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           </div>
         ) : null} */}
       </div>
-      <div className="flex justify-center sm:justify-start">
-        <IndividualFilterButtonNoLink
+      <div className="flex justify-center sm:justify-start mt-4 sm:mt-0">
+        {/* <IndividualFilterButtonNoLink
           options={
             filterState.saleLease == saleLease.sale.name
               ? priceRangeOptionsSaleProperties
@@ -319,6 +320,27 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           handleFilterChange={handlePriceChange}
           city={filterState.city}
           type={filterState.type}
+        /> */}
+        <IndividualFilter
+          options={
+            filterState.saleLease == saleLease.sale.name
+              ? priceRangeOptionsSaleProperties
+              : priceRangeOptionsLeaseProperties
+          }
+          defaultValue={null}
+          name="priceRange"
+          value={filterState.type}
+          setFilterState={setFilterState}
+          handleFilterChange={handlePriceChange}
+          isMulti={false}
+          isMobileView={isMobileView}
+          city={filterState.city}
+          saleLease={filterState.saleLease}
+          filterObj={
+            filterState.saleLease == saleLease.sale.name
+              ? priceRangesSaleProperties
+              : priceRangesLeaseProperties
+          }
         />
       </div>
 
@@ -366,14 +388,23 @@ const CustomDropdown = ({
         ? selectedValues.filter((val) => val !== option)
         : [...selectedValues, option];
     } else {
-      newValues = [
-        Object.values(filterObj).find((obj) => {
-          if (obj.name == option) return obj.value;
-        }).value,
-      ];
+      if (name != "priceRange") {
+        newValues = [
+          Object.values(filterObj).find((obj) => {
+            if (obj.name == option) return obj.value;
+          }).value,
+        ];
+      } else {
+        console.log(option);
+        newValues = [
+          Object.keys(filterObj).find((keyVal) => {
+            if (keyVal == option) return filterObj[keyVal];
+          }),
+        ];
+      }
       setIsOpen(false);
     }
-
+    console.log(newValues);
     setSelectedValues(newValues);
     handleFilterChange(name, newValues.join(", ").replaceAll("_", " "));
   };
@@ -396,8 +427,12 @@ const CustomDropdown = ({
         `}
       >
         <span className="truncate">
-          {Object.values(filterObj).find((obj) => obj.value == selectedValues)
-            ?.name || defaultValue}
+          {console.log(selectedValues)}
+          {name != "priceRange"
+            ? Object.values(filterObj).find(
+                (obj) => obj.value == selectedValues
+              )?.name
+            : selectedValues[0] || defaultValue}
         </span>
         <FaChevronDown
           size={10}
@@ -444,7 +479,6 @@ const CustomDropdown = ({
                 </Link>
               );
             }
-
             return (
               <div
                 key={option}
