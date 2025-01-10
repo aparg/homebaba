@@ -73,6 +73,8 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
     .filter((opt) => opt.value > 0)
     .map((item) => item.name);
   //options for house type
+
+  console.log(bedCountOptions);
   const houseTypeOptions = Object.values(houseType)
     .filter((item) => item.value)
     .map((item) => item.name);
@@ -106,6 +108,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
 
   const handleFilterChange = (name, value) => {
     const newFilterState = { ...filterState };
+    console.log(name, value);
     newFilterState[name] = value;
     if (name === "saleLease") {
       //reset the price filter
@@ -207,21 +210,27 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           {isMobileView ? (
             <IndividualFilter
               options={bedCountOptions}
-              defaultValue={bedCountOptions[0]}
+              defaultValue={bedCountOptions[0].name}
               name="bed"
               value={filterState.bed}
               setFilterState={setFilterState}
               handleFilterChange={handleFilterChange}
               isMobileView={isMobileView}
+              filterObj={bedCount}
             />
           ) : (
-            <IndividualFilterButtonNoLink
+            <IndividualFilter
               options={bedCountOptions}
-              defaultValue={filterState.bed}
+              defaultValue="Beds"
               name="bed"
               value={filterState.bed}
               setFilterState={setFilterState}
               handleFilterChange={handleFilterChange}
+              isMulti={false}
+              isMobileView={isMobileView}
+              city={filterState.city}
+              saleLease={filterState.saleLease}
+              filterObj={bedCount}
             />
           )}
         </div>
@@ -240,6 +249,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
             isMobileView={isMobileView}
             city={filterState.city}
             saleLease={filterState.saleLease}
+            filterObj={houseType}
           />
         </div>
 
@@ -331,6 +341,7 @@ const CustomDropdown = ({
   defaultValue,
   city,
   saleLease,
+  filterObj,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValues, setSelectedValues] = useState(
@@ -348,7 +359,6 @@ const CustomDropdown = ({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [handleClickOutside]);
-
   const handleSelect = (option) => {
     let newValues;
     if (isMulti) {
@@ -357,7 +367,7 @@ const CustomDropdown = ({
         : [...selectedValues, option];
     } else {
       newValues = [
-        Object.values(houseType).find((obj) => {
+        Object.values(filterObj).find((obj) => {
           if (obj.name == option) return obj.value;
         }).value,
       ];
@@ -386,8 +396,8 @@ const CustomDropdown = ({
         `}
       >
         <span className="truncate">
-          {Object.values(houseType).find((obj) => obj.value == selectedValues)
-            ?.name || "House Type"}
+          {Object.values(filterObj).find((obj) => obj.value == selectedValues)
+            ?.name || defaultValue}
         </span>
         <FaChevronDown
           size={10}

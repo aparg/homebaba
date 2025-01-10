@@ -16,6 +16,7 @@ import { ImSpinner } from "react-icons/im";
 import HotListings from "./HotListings";
 import PageSelector from "./PageSelector";
 import Image from "next/image";
+import { FadeLoader } from "react-spinners";
 // import formatCurrency from "@/helpers/formatCurrency";
 // import FilterSubmit from "../FilterSubmit";
 
@@ -38,7 +39,7 @@ const FiltersWithSalesList = ({
 
   const initialState = {
     saleLease: saleLeaseFilterVal,
-    bed: bedCount.any.name,
+    bed: bedCount.any.value,
     priceRange: {
       min: 0,
       max: 0,
@@ -60,7 +61,7 @@ const FiltersWithSalesList = ({
     if (saleLeaseFilterVal) storedState.saleLease = saleLeaseFilterVal;
     if (city) storedState.city = city;
   }
-  const [filterState, setFilterState] = useState(storedState || initialState);
+  const [filterState, setFilterState] = useState(initialState);
   const [salesData, setSalesData] = useState(salesListData);
   const [offset, setOffset] = useState(0);
   const { isMobileView } = useDeviceView();
@@ -116,8 +117,7 @@ const FiltersWithSalesList = ({
       saleLease: Object.values(saleLease).find(
         (saleLeaseObj) => saleLeaseObj.name === params.saleLease
       )?.name,
-      bed: Object.values(bedCount).find((bedObj) => bedObj.name === params.bed)
-        ?.value,
+      bed: params.bed,
       minListPrice: Number(params.priceRange?.min ?? 0),
       maxListPrice: Number(params.priceRange?.max ?? 0),
       houseType: _getMergedHouseType(params),
@@ -225,7 +225,7 @@ const FiltersWithSalesList = ({
 
         {loading ? (
           <div className="w-[20px] mx-auto">
-            <ImSpinner size="sm" />
+            <FadeLoader />
           </div>
         ) : salesData?.length > 0 ? (
           <>

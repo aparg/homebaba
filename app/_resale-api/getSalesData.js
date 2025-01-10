@@ -41,6 +41,8 @@ export const getFilteredRetsData = async (queryParams) => {
   // const lowriseOnly = `TypeOwnSrch='.S.',TypeOwnSrch='.D.',TypeOwnSrch='.A.',TypeOwnSrch='.J.',TypeOwnSrch='.K.'`;
   try {
     //all the necessary queries possible
+    console.log("BED COUNT");
+    console.log(queryParams.bed);
     let selectQuery = `${
       queryParams.city ? `contains(City,'${queryParams.city}')` : ""
     }${
@@ -51,9 +53,9 @@ export const getFilteredRetsData = async (queryParams) => {
         : ""
     }${
       queryParams.bed
-        ? `${
-            queryParams.bed ? " and " : ""
-          }BedroomsTotal eq ${queryParams.bed?.toFixed(3)}`
+        ? `${queryParams.bed ? " and " : ""}BedroomsTotal eq ${Number(
+            queryParams.bed
+          )?.toFixed(3)}`
         : ""
     }`;
     const skipQuery = `${queryParams.offset}`;
