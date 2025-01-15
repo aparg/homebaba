@@ -58,7 +58,7 @@ const SalesList = ({
       minListPrice: Number(filterState.priceRange?.min ?? 0),
       maxListPrice: Number(filterState.priceRange?.max ?? 0),
       houseType: _getMergedHouseType(filterState),
-      hasBasement: filterState.Basement,
+      Basement: filterState.Basement,
       sepEntrance: filterState.sepEntrance,
       washroom: filterState.washroom,
       priceDecreased: filterState.priceDecreased,

@@ -157,7 +157,7 @@ const HomeOverview = ({ main_data }) => {
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
               <p className="cardd-subtitle_bg-black font-bold">
-                # total bathrooms
+                Total bathrooms
               </p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
@@ -166,7 +166,7 @@ const HomeOverview = ({ main_data }) => {
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold"># Full baths</p>
+              <p className="cardd-subtitle_bg-black font-bold">Full baths</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -182,20 +182,23 @@ const HomeOverview = ({ main_data }) => {
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
               <p className="cardd-subtitle_bg-black font-bold">
-                # of above grade bedrooms
+                Number of above grade bedrooms
               </p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
-                {main_data.BedroomsTotal}
+                {main_data.RoomsAboveGrade}
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold"># of rooms</p>
+              <p className="cardd-subtitle_bg-black font-bold">
+                Number of rooms
+              </p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
-                {Number(main_data.Rooms) + Number(main_data.RoomsPlus)}
+                {Number(main_data.RoomsAboveGrade) +
+                  Number(main_data.RoomsBelowGrade)}
               </p>
             </div>
           </div>
@@ -212,7 +215,7 @@ const HomeOverview = ({ main_data }) => {
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
-                {Boolean(Number(main_data.FamilyRoom) > 0) ? "Yes" : "No"}
+                {main_data?.DenFamilyroomYN}
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
@@ -261,7 +264,7 @@ const HomeOverview = ({ main_data }) => {
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
               <p className="cardd-subtitle_bg-black font-bold">
-                # garage spaces
+                Total garage spaces
               </p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
@@ -271,7 +274,7 @@ const HomeOverview = ({ main_data }) => {
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
               <p className="cardd-subtitle_bg-black font-bold">
-                # parking spaces
+                Number parking spaces
               </p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
@@ -301,7 +304,7 @@ const HomeOverview = ({ main_data }) => {
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
-                {main_data.Basement1 ? "Yes" : "No"}
+                {main_data.Basement.length > 0 ? "Yes" : "No"}
               </p>
             </div>
           </div>

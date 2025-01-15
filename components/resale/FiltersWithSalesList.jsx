@@ -17,6 +17,7 @@ import HotListings from "./HotListings";
 import PageSelector from "./PageSelector";
 import Image from "next/image";
 import { FadeLoader } from "react-spinners";
+import { useClientFilter } from "@/hooks/use-client-filter";
 // import formatCurrency from "@/helpers/formatCurrency";
 // import FilterSubmit from "../FilterSubmit";
 
@@ -61,14 +62,18 @@ const FiltersWithSalesList = ({
     if (city) storedState.city = city;
   }
   const [filterState, setFilterState] = useState(initialState);
+
   const [salesData, setSalesData] = useState(salesListData);
+  const [clientFilteredData, isClientFiltered] = useClientFilter(
+    salesData,
+    filterState
+  );
   const [offset, setOffset] = useState(0);
   const { isMobileView } = useDeviceView();
   const [loading, setLoading] = useState(true);
-  const [noData, setNoData] = useState(false);
   const [selected, setSelected] = useState(1); //the page that is selected
 
-  const { hotSales, remainingSales } = useMemo(() => {
+  const separateSalesData = (salesData) => {
     if (selected == 1) {
       // Get the current date and time
       const currentDate = new Date();
@@ -101,19 +106,16 @@ const FiltersWithSalesList = ({
     } else {
       return { hotSales: [], remainingSales: salesData };
     }
-  }, [salesData]);
+  };
+
+  const { hotSales, remainingSales } = useMemo(() => {
+    if (isClientFiltered) {
+      console.log("Client Filtered Data");
+      return separateSalesData(clientFilteredData);
+    } else return separateSalesData(salesData);
+  }, [salesData, clientFilteredData]);
 
   //temporary solution for basement filtering
-  useEffect(() => {
-    if (filterState.Basement.length > 0) {
-      let filteredSalesData = salesData.filter((data) => {
-        return filterState.Basement.every((basement) =>
-          data.Basement.includes(basement)
-        );
-      });
-      setSalesData(filteredSalesData);
-    }
-  }, [filterState.Basement]);
 
   const _getMergedHouseType = (state) => {
     const selectedHouseType = [state.type];
@@ -146,6 +148,7 @@ const FiltersWithSalesList = ({
     setLoading(true);
     // console.log(payload);
     const filteredSalesData = await getFilteredRetsData(queryParams);
+
     setSalesData(filteredSalesData);
     if (!filteredSalesData?.length == 0) {
       setOffset(offset);
@@ -170,20 +173,6 @@ const FiltersWithSalesList = ({
 
     fetchFilteredData(initialState, 20, selected * 20 - 20);
   }, [selected]);
-
-  // useEffect(() => {
-  //   console.log("executed");
-  //   async function getUpdatedData() {
-  //     await fetchFilteredData(
-  //       {
-  //         ...initialState,
-  //       },
-  //       20,
-  //       selected * 20 - 20
-  //     );
-  //   }
-  //   getUpdatedData();
-  // }, [selected]);
 
   const homeText = !requiredType
     ? "Homes"
@@ -238,7 +227,7 @@ const FiltersWithSalesList = ({
           <div className="w-[20px] mx-auto">
             <FadeLoader />
           </div>
-        ) : salesData?.length > 0 ? (
+        ) : salesData?.length > 0 || hotSales?.length > 0 ? (
           <>
             {selected === 1 && <HotListings salesData={hotSales} city={city} />}
             <div

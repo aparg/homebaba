@@ -116,6 +116,7 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
+    console.log(url);
     const res = await fetch(url, options);
 
     const data = await res.json();

@@ -12,6 +12,7 @@ const GallerySkeleton = () => (
               ? "row-span-2 col-span-4 sm:col-span-2 h-[240px] sm:h-[520px] w-full"
               : "h-[100px] sm:h-[255px] w-full"
           } ${index >= 5 ? "hidden" : ""}`}
+          key={index}
         />
       ))}
     </div>
@@ -46,7 +47,6 @@ const Gallery = ({ data }) => {
           elementClassNames="grid grid-rows-3 sm:grid-rows-2 grid-cols-4 gap-2"
         >
           <>
-            {console.log(data)}
             {data?.length > 0 ? (
               data?.map((url, index) => (
                 <Link
