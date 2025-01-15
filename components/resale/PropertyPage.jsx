@@ -96,7 +96,7 @@ const PropertyPage = ({ main_data }) => {
               <button className="bg-gray-200 mt-4 sm:py-1 px-2 text-black sm:text-xs font-semibold mb-1 w-fit-content rounded-md text-left py-[0.5px] text-[0.65rem]">
                 <span>
                   Average price for {typeOwnSrchToName[main_data?.TypeOwnSrch]}{" "}
-                  properties in {main_data.CountyOrParish}: $
+                  properties in {main_data.City}: $
                   {main_data.avg.toLocaleString()}
                 </span>
               </button>
@@ -200,7 +200,7 @@ const PropertyPage = ({ main_data }) => {
                 title="Walk Score"
                 className="ham p-0"
                 width="100%"
-                src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName},${main_data.CountyOrParish}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
+                src={`https://www.walkscore.com/serve-walkscore-tile.php?wsid=&amp&s=${dashedStreetName},${main_data.City}&amp;o=h&amp;c=f&amp;h=500&amp;fh=0&amp;w=737`}
               ></iframe>
               {/* </div> */}
               <script

@@ -34,6 +34,7 @@ import {
   washroomCount,
   priceRangesSaleProperties,
   priceRangesLeaseProperties,
+  basementType,
 } from "@/constant";
 
 import useDeviceView from "@/helpers/useDeviceView";
@@ -89,22 +90,6 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
     priceRangesLeaseProperties
   );
 
-  //dynamic price range generator based on sale or lease options
-  // const minMaxPrice = useMemo(() => {
-  //   if (filterState.saleLease.includes(Object.values(saleLease)[1].name)) {
-  //     //i.e for lease, display different min and max value
-  //     return {
-  //       min: 1500,
-  //       max: 8000,
-  //     };
-  //   } else {
-  //     return {
-  //       min: 300000,
-  //       max: 1500000,
-  //     };
-  //   }
-  // }, [filterState]);
-
   const handleFilterChange = (name, value) => {
     const newFilterState = { ...filterState };
     newFilterState[name] = value;
@@ -118,6 +103,14 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
     scrollToFilters();
     setFilterState({ ...newFilterState });
     fetchFilteredData(newFilterState);
+  };
+
+  const handleArrayFilterChange = (name, value) => {
+    const newFilterState = { ...filterState };
+    newFilterState[name] = [...filterState[name], value];
+    scrollToFilters();
+    setFilterState({ ...newFilterState });
+    // fetchFilteredData(newFilterState);
   };
 
   const handlePriceChange = (name, value) => {
@@ -239,7 +232,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
               Object.values(houseType).find((val) => val.value == null).name
             }
             name="type"
-            value={filterState.type}
+            value={filterState.type || "House Type"}
             setFilterState={setFilterState}
             handleFilterChange={handleFilterChange}
             isMulti={false}
@@ -249,74 +242,8 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
             filterObj={houseType}
           />
         </div>
-
-        {/* {isMobileView ? (
-          <div className="basement__filter">
-            <IndividualFilterWithCancel
-              name="hasBasement"
-              {...{ handleFilterChange }}
-              value={filterState.hasBasement}
-            />
-          </div>
-        ) : null} */}
-
-        {/* 
-        <IndividualFilterNoOptions
-          label="Price Decreased"
-          name="priceDecreased"
-          value={filterState.priceDecreased}
-          handleFilterChange={handleFilterChange}
-        /> */}
-        {/* {!isMobileView ? (
-          <div className="price-range__filter ml-2 h-[34px] pb-14 px-10 w-[25vw]">
-            <div
-              className={
-                filterState.saleLease == "For Sale" ? "block" : "hidden"
-              }
-            >
-              <PriceRangeFilter
-                name="priceRange"
-                value={filterState.priceRange}
-                handleFilterChange={handleFilterChange}
-                minMaxPrice={{
-                  min: 300000,
-                  max: 1500000,
-                }}
-              />
-            </div>
-
-            <div
-              className={
-                filterState.saleLease == "For Lease" ? "block" : "hidden"
-              }
-            >
-              <PriceRangeFilter
-                name="priceRange"
-                value={filterState.priceRange}
-                handleFilterChange={handleFilterChange}
-                minMaxPrice={{ min: 1500, max: 8000 }}
-              />
-            </div>
-          </div>
-        ) : null} */}
       </div>
       <div className="flex justify-center sm:justify-start mt-4 sm:mt-0">
-        {/* <IndividualFilterButtonNoLink
-          options={
-            filterState.saleLease == saleLease.sale.name
-              ? priceRangeOptionsSaleProperties
-              : priceRangeOptionsLeaseProperties
-          }
-          name="priceRange"
-          value={Object.keys(allPriceRanges).find(
-            (opt) =>
-              allPriceRanges[opt].min == filterState?.priceRange?.min &&
-              allPriceRanges[opt].max == filterState?.priceRange?.max
-          )}
-          handleFilterChange={handlePriceChange}
-          city={filterState.city}
-          type={filterState.type}
-        /> */}
         <IndividualFilter
           options={
             filterState.saleLease == saleLease.sale.name
@@ -345,6 +272,13 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           {...{ washroomCountOptions, additonalFilterChange, filterState }}
         />
       </div> */}
+      <IndividualFilterButtonNoLink
+        name="Basement"
+        options={Object.keys(basementType)}
+        value={null}
+        handleFilterChange={handleArrayFilterChange}
+        filterObj={basementType}
+      />
     </>
   );
 };
@@ -420,6 +354,7 @@ const CustomDropdown = ({
           hover:shadow-md transition-all text-center
         `}
       >
+        {console.log(selectedValues)}
         <span className="truncate">
           {name != "priceRange"
             ? Object.values(filterObj).find(
@@ -509,8 +444,7 @@ const MoreFilter = ({
 }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [moreFilterState, setMoreFilterState] = useState({
-    hasBasement: filterState.hasBasement,
-    sepEntrance: filterState.sepEntrance,
+    Basement: filterState.Basement,
     washroom: filterState.washroom,
   });
 
@@ -833,6 +767,7 @@ const IndividualFilterButtonNoLink = ({
   name,
   value,
   handleFilterChange,
+  filterObj,
   city,
   type,
 }) => {
@@ -840,7 +775,7 @@ const IndividualFilterButtonNoLink = ({
 
   const handleClick = (name, option) => {
     setActiveFilter(option);
-    handleFilterChange(name, option);
+    handleFilterChange(name, filterObj[option]);
   };
 
   return (

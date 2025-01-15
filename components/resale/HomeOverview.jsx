@@ -82,8 +82,8 @@ const HomeOverview = ({ main_data }) => {
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
-              {main_data?.Basement1
-                ? `${main_data?.Basement1}, ${main_data?.Basement2}`
+              {main_data?.Basement
+                ? `${main_data?.Basement.join(",")}`
                 : "None"}
             </p>
           </div>
@@ -434,7 +434,7 @@ const HomeOverview = ({ main_data }) => {
             </div> */}
         <button
           onClick={() => setCollapse(!collapse)}
-          className="bg-black font-bold mt-2 px-2 border-2 border-black py-1 text-white rounded-lg hover:text-black hover:bg-gray-200 focus:outline-none transition-colors duration-200 sm:my-2 mt-2 mb-4 "
+          className="bg-black font-bold px-2 border-2 border-black py-1 text-white rounded-lg hover:text-black hover:bg-gray-200 focus:outline-none transition-colors duration-200 sm:my-2 mt-2 mb-4 "
         >
           See {collapse ? "More ↓" : "Less ↑"}
         </button>

@@ -100,7 +100,7 @@ const SearchOption = ({ suggestion, setSearchTerm }) => {
       if (suggestion?.ListingKey) {
         const searchObj = JSON.stringify({
           UnparsedAddress: suggestion?.UnparsedAddress,
-          CountyOrParish: suggestion?.CountyOrParish,
+          CountyOrParish: suggestion?.City,
           ListingKey: suggestion?.ListingKey,
         });
         searchesArray.unshift(searchObj);
@@ -129,7 +129,7 @@ const SearchOption = ({ suggestion, setSearchTerm }) => {
         suggestion?.ListingKey
           ? generateURL({
               listingIDVal: suggestion.ListingKey,
-              cityVal: suggestion?.CountyOrParish,
+              cityVal: suggestion?.City,
             }) //for a listing
           : generateURL({ cityVal: suggestion?.city })
       }

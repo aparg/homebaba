@@ -50,7 +50,7 @@ const page = async ({ params }) => {
 
   // const statsValue = await fetchStatsFromMLS({
   //   listingType: main_data?.PropertySubType,
-  //   municipality: main_data?.CountyOrParish,
+  //   municipality: main_data?.City,
   //   saleLease: main_data?.TransactionType,
   // });
   // main_data.avg = statsValue?.avg
@@ -203,6 +203,6 @@ export async function generateMetadata({ params }, parent) {
       images: imageURLs[0],
     },
     title: `${main_data?.StreetNumber} ${main_data?.StreetName} ${main_data?.StreetSuffix}`,
-    description: `${main_data?.PropertySubType}.${main_data?.CountyOrParish}`,
+    description: `${main_data?.PropertySubType}.${main_data?.City}`,
   };
 }

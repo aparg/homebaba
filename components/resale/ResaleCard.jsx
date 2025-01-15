@@ -107,7 +107,7 @@ const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
     <section className="relative transition-all duration-200 transform bg-white group rounded-2xl p-0 hover:shadow-lg hover:rounded-t-2xl  hover:-translate-y-1 overflow-hidden">
       <Link
         href={generateURL({
-          cityVal: curElem.CountyOrParish,
+          cityVal: curElem.City,
           listingIDVal: streetAndMLS,
         })}
         className="text-black"
@@ -223,7 +223,7 @@ const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
                   <div className="text-dark text-sm">
                     {curElem.StreetName ? (
                       `${curElem.StreetNumber} ${curElem.StreetName}${" "}
-                    ${curElem.StreetSuffix} ${curElem.CountyOrParish}, Ontario`
+                    ${curElem.StreetSuffix} ${curElem.City}, Ontario`
                     ) : (
                       <span className="p-4"></span>
                     )}

@@ -13,7 +13,7 @@ export default function CreateSchema(listing) {
     description:
       listing.Address +
       " is a brand new Home located at  " +
-      listing.CountyOrParish +
+      listing.City +
       " , " +
       listing.PostalCode +
       " with great features " +
@@ -31,7 +31,7 @@ export default function CreateSchema(listing) {
       url:
         "https://homebaba.ca/" +
         generateURL({
-          cityVal: listing.CountyOrParish,
+          cityVal: listing.City,
           listingIDVal: slugGenerator(listing),
         }),
       priceCurrency: "CAD",

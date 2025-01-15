@@ -45,8 +45,7 @@ const FiltersWithSalesList = ({
       max: 0,
     },
     type: houseTypeFilterVal,
-    hasBasement: null,
-    sepEntrance: null,
+    Basement: [],
     washroom: washroomCount.any.value,
     priceDecreased: null,
     city: city,
@@ -90,6 +89,7 @@ const FiltersWithSalesList = ({
       // Separate sales data for 24 hours ago and remaining days
       const hotSales = [];
       const remainingSales = [];
+
       salesData?.forEach((data) => {
         if (is24HoursAgo(data.OriginalEntryTimestamp) && hotSales.length < 5) {
           hotSales.push(data);
@@ -102,6 +102,18 @@ const FiltersWithSalesList = ({
       return { hotSales: [], remainingSales: salesData };
     }
   }, [salesData]);
+
+  //temporary solution for basement filtering
+  useEffect(() => {
+    if (filterState.Basement.length > 0) {
+      let filteredSalesData = salesData.filter((data) => {
+        return filterState.Basement.every((basement) =>
+          data.Basement.includes(basement)
+        );
+      });
+      setSalesData(filteredSalesData);
+    }
+  }, [filterState.Basement]);
 
   const _getMergedHouseType = (state) => {
     const selectedHouseType = [state.type];
@@ -121,8 +133,7 @@ const FiltersWithSalesList = ({
       minListPrice: Number(params.priceRange?.min ?? 0),
       maxListPrice: Number(params.priceRange?.max ?? 0),
       houseType: _getMergedHouseType(params),
-      hasBasement: params.hasBasement,
-      sepEntrance: params.sepEntrance,
+      Basement: params.Basement,
       washroom: params.washroom,
       priceDecreased: params.priceDecreased,
     };

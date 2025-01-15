@@ -78,23 +78,26 @@ export const getFilteredRetsData = async (queryParams) => {
         }
       });
     }
+    // console.log(queryParams.Basement);
+    // if (queryParams.Basement?.includes("Walkout")) {
+    //   selectQuery += `& Basement has Walkout`;
+    // }
 
-    if (queryParams.hasBasement) {
-      selectQuery += `and Basement1=Apartment`;
-    }
+    // if (queryParams.Basement?.includes("Separate Entrance")) {
+    //   selectQuery += `& Basement has Separate Entrance`;
+    // }
+    // if (queryParams.Basement?.includes("Finished Basement")) {
+    //   selectQuery += `& Basement has Finished Basement`;
+    // }
 
-    if (queryParams.sepEntrance) {
-      selectQuery += `and Basement2=Sep Entrance`;
-    }
-    if (queryParams.maxListPrice > queryParams.minListPrice) {
-      rangeQuery += ` and ListPrice le ${queryParams.maxListPrice}`;
-    }
+    // if (queryParams.maxListPrice > queryParams.minListPrice) {
+    //   rangeQuery += ` and ListPrice le ${queryParams.maxListPrice}`;
+    // }
 
-    if (queryParams.priceDecreased) {
-      selectQuery += `,PriceDecreased=true`;
-    }
+    // if (queryParams.priceDecreased) {
+    //   selectQuery += `,PriceDecreased=true`;
+    // }
     let url = "";
-
     if (queryParams.propertyType == "commercial") {
       url = commercial.properties.replace(
         "$query",
@@ -106,7 +109,6 @@ export const getFilteredRetsData = async (queryParams) => {
         `?$filter=${selectQuery} ${rangeQuery}&$skip=${skipQuery}&$top=${limitQuery}&$orderby=OriginalEntryTimestamp desc`
       );
     }
-    console.log(url);
     const options = {
       method: "GET",
       headers: {

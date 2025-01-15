@@ -43,7 +43,7 @@ const PropertiesDisplayer = ({
                 return (
                   <DisplayerCard
                     MLS={property.ListingKey}
-                    city={property.CountyOrParish}
+                    city={property.City}
                     address={property.Address}
                     type={propertyPropertySubType}
                     key={idx}
@@ -60,7 +60,7 @@ const PropertiesDisplayer = ({
                 return (
                   <DisplayerCard
                     MLS={property.ListingKey}
-                    city={property.CountyOrParish}
+                    city={property.City}
                     address={property.Address}
                     type={propertyPropertySubType}
                     key={idx}
