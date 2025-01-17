@@ -118,7 +118,7 @@ const CustomDropdown = ({
       {isOpen && (
         <div
           className={`
-              min-w-[200px] max-h-[300px] overflow-y-auto
+              min-w-[120px] sm:min-w-[150px] max-h-[300px] overflow-y-auto
               bg-white rounded-lg shadow-lg
               border border-gray-200
               mt-2 py-2

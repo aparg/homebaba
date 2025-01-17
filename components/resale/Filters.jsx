@@ -182,32 +182,19 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         />
 
         <div className="rounded-full sm:mx-2">
-          {isMobileView ? (
-            <DropdownFilter
-              options={bedCountOptions}
-              defaultValue={bedCountOptions[0].name}
-              name="bed"
-              value={filterState.bed}
-              setFilterState={setFilterState}
-              handleFilterChange={handleFilterChange}
-              isMobileView={isMobileView}
-              filterObj={bedCount}
-            />
-          ) : (
-            <DropdownFilter
-              options={bedCountOptions}
-              defaultValue="Beds"
-              name="bed"
-              value={filterState.bed > 0 ? filterState.bed : "Beds"}
-              setFilterState={setFilterState}
-              handleFilterChange={handleFilterChange}
-              isMulti={false}
-              isMobileView={isMobileView}
-              city={filterState.city}
-              saleLease={filterState.saleLease}
-              filterObj={bedCount}
-            />
-          )}
+          <DropdownFilter
+            options={bedCountOptions}
+            defaultValue="Beds"
+            name="bed"
+            value={filterState.bed > 0 ? filterState.bed : "Beds"}
+            setFilterState={setFilterState}
+            handleFilterChange={handleFilterChange}
+            isMulti={false}
+            isMobileView={isMobileView}
+            city={filterState.city}
+            saleLease={filterState.saleLease}
+            filterObj={bedCount}
+          />
         </div>
 
         <div className="rounded-full overflow-hidden sm:mx-2 hover:shadow-lg">
@@ -227,29 +214,29 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
             filterObj={houseType}
           />
         </div>
-      </div>
-      <div className="flex justify-center sm:justify-start mt-4 sm:mt-0 sm:mx-2">
-        <DropdownFilter
-          options={
-            filterState.saleLease == saleLease.sale.name
-              ? priceRangeOptionsSaleProperties
-              : priceRangeOptionsLeaseProperties
-          }
-          defaultValue={"Price Range"}
-          name="priceRange"
-          value={"Price Range"}
-          setFilterState={setFilterState}
-          handleFilterChange={handlePriceChange}
-          isMulti={false}
-          isMobileView={isMobileView}
-          city={filterState.city}
-          saleLease={filterState.saleLease}
-          filterObj={
-            filterState.saleLease == saleLease.sale.name
-              ? priceRangesSaleProperties
-              : priceRangesLeaseProperties
-          }
-        />
+        <div className="flex justify-center sm:justify-start sm:mx-2">
+          <DropdownFilter
+            options={
+              filterState.saleLease == saleLease.sale.name
+                ? priceRangeOptionsSaleProperties
+                : priceRangeOptionsLeaseProperties
+            }
+            defaultValue={"Price Range"}
+            name="priceRange"
+            value={"Price Range"}
+            setFilterState={setFilterState}
+            handleFilterChange={handlePriceChange}
+            isMulti={false}
+            isMobileView={isMobileView}
+            city={filterState.city}
+            saleLease={filterState.saleLease}
+            filterObj={
+              filterState.saleLease == saleLease.sale.name
+                ? priceRangesSaleProperties
+                : priceRangesLeaseProperties
+            }
+          />
+        </div>
       </div>
 
       {/* <div className="rounded-full">
