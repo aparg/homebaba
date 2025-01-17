@@ -28,10 +28,10 @@ export const IndividualLinkedFilterButton = ({
         return (
           <div
             key={index}
-            className={`mx-[2px] px-1 sm:px-3 py-1 cursor-pointer text-nowrap text-xs sm:text-sm h-[28px] leading-[1.2rem] sm:leading-normal sm:h-[34px] flex justify-content-center align-items-center rounded-full hover:shadow-lg border-[2px] ${
+            className={`flex items-center justify-center mx-[2px] px-1 sm:px-3 text-xs font-semibold h-8 border-[#b2b2b2] tracking-[0.01125] border-[1px] cursor-pointer text-nowrap leading-[1.2rem] sm:leading-normal rounded-full hover:shadow-lg  ${
               isActive(option)
                 ? `border-black! text-white bg-black`
-                : "border-gray-filter"
+                : "text-gray-700"
             }`}
             // onClick={() => handleClick(name, option)}
             // style={{ border: "2px solid #e5e7eb" }}

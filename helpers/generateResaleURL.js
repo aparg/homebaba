@@ -31,7 +31,9 @@ export const generateURL = ({
       ?.toLowerCase();
   null;
   if (listingIDVal && city)
-    return `/resale/ontario/${city}/listings/${listingIDVal}`;
+    return `/resale/ontario/${city}/listings/${encodeURIComponent(
+      listingIDVal
+    )}`;
   let finalLink = `/resale/ontario`;
 
   if (city) finalLink += "/" + city;
@@ -42,5 +44,5 @@ export const generateURL = ({
     finalLink += "/" + (houseTypeLinkObj[houseType] || "homes");
   if (saleLeaseType && houseType) finalLink += "-for-" + saleLeaseType;
   if (saleLeaseType && !houseType) finalLink += "/homes-for-" + saleLeaseType;
-  return finalLink;
+  return encodeURI(finalLink);
 };

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { generateURL } from "@/helpers/generateResaleURL";
 import Link from "next/link";
+import { Cross, CrossIcon, X } from "lucide-react";
 
 const CustomDropdown = ({
   options,
@@ -57,6 +58,9 @@ const CustomDropdown = ({
     setSelectedValues(newValues);
     handleFilterChange(name, newValues.join(", ").replaceAll("_", " "));
   };
+
+  const optionSelected =
+    selectedValues.length > 0 && selectedValues[0] !== defaultValue;
   console.log(selectedValues);
   const label = () => {
     if (name == "priceRange") {
@@ -68,29 +72,47 @@ const CustomDropdown = ({
       );
     }
   };
+
+  const clearFilter = (name) => {
+    setSelectedValues([]);
+    handleFilterChange(
+      name,
+      Object.values(filterObj).find((obj) => !obj.value).value
+    );
+  };
+  {
+    console.log(value);
+  }
   return (
     <div className="inline-block" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`
             flex items-center justify-between
-            capitalize text-xs sm:text-sm h-[28px] sm:h-[34px] 
-            rounded-full px-3 border
+            capitalize text-xs h-8 border-[#b2b2b2] tracking-[0.01125]
+            rounded-full px-3 border-[1px] font-semibold 
             ${isMobileView ? "px-1 gap-1 min-w-[40px]" : "min-w-[120px]"}
             ${
-              selectedValues[0] !== defaultValue
+              optionSelected
                 ? `bg-black text-white border-black`
-                : "border-gray-300 bg-white "
+                : "border-gray-300 text-gray-700 bg-white "
             }
             hover:shadow-md transition-all text-center
           `}
       >
-        {console.log(selectedValues[0])}
         <span className="truncate">{label()}</span>
-        <FaChevronDown
-          size={10}
-          className={`ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`}
-        />
+        {optionSelected ? (
+          <button className="pl-3" onClick={() => clearFilter(name)}>
+            <X className="w-5 h-5" />
+          </button>
+        ) : (
+          <FaChevronDown
+            size={10}
+            className={`ml-2 transition-transform ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        )}
       </button>
 
       {isOpen && (
@@ -99,7 +121,7 @@ const CustomDropdown = ({
               min-w-[200px] max-h-[300px] overflow-y-auto
               bg-white rounded-lg shadow-lg
               border border-gray-200
-              mt-2
+              mt-2 py-2
             `}
           style={{
             position: "absolute",
@@ -122,10 +144,10 @@ const CustomDropdown = ({
                   key={option}
                   href={url}
                   className="
-                      block w-full px-4 py-2
+                      block mx-2 py-2
                       hover:bg-gray-100 
                       text-sm text-gray-700
-                      cursor-pointer
+                      cursor-pointer hover:font-bold
                     "
                 >
                   {option}

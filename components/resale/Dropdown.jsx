@@ -38,8 +38,11 @@ const Dropdown = ({ name, options, width = "25rem", text }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="flex text-red-500">
+        <div className="flex items-center">
           {name}
+          <span className="-top-3 ml-2 px-1 py-1 bg-[#dc3545] text-white rounded-md font-semibold text-xs">
+            Resale
+          </span>
           <span className="ml-1 mt-2">
             <FaChevronDown size={8} />
           </span>

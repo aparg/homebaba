@@ -122,7 +122,7 @@ const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
               >
                 {loadingImage ? (
                   <Spinner />
-                ) : (
+                ) : imgUrl ? (
                   <img
                     className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-t-2xl"
                     src={imgUrl}
@@ -134,6 +134,11 @@ const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
                       handleImageError(e);
                     }}
                   />
+                ) : (
+                  <div className="w-full h-full flex flex-col justify-center items-center">
+                    <img src="/icons/no-photo.png" className="w-10 h-10" />
+                    <p>No Image Found</p>
+                  </div>
                 )}
 
                 {/* <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-50"></div> */}

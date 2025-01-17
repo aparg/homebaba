@@ -220,6 +220,7 @@ const FiltersWithSalesList = ({
           className="flex sticky top-[4rem] z-50 bg-white items-center w-full flex-wrap overflow-visible justify-center sm:justify-normal"
           id="filter"
         >
+          {console.log(filterState)}
           <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
         </div>
 
