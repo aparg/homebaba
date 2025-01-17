@@ -235,7 +235,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
               ? priceRangeOptionsSaleProperties
               : priceRangeOptionsLeaseProperties
           }
-          defaultValue={null}
+          defaultValue={"Price Range"}
           name="priceRange"
           value={"Price Range"}
           setFilterState={setFilterState}

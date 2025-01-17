@@ -78,6 +78,7 @@ export const getFilteredRetsData = async (queryParams) => {
         }
       });
     }
+
     // console.log(queryParams.Basement);
     // if (queryParams.Basement?.includes("Walkout")) {
     //   selectQuery += `& Basement has Walkout`;
@@ -90,13 +91,10 @@ export const getFilteredRetsData = async (queryParams) => {
     //   selectQuery += `& Basement has Finished Basement`;
     // }
 
-    // if (queryParams.maxListPrice > queryParams.minListPrice) {
-    //   rangeQuery += ` and ListPrice le ${queryParams.maxListPrice}`;
-    // }
+    if (queryParams.maxListPrice > queryParams.minListPrice) {
+      rangeQuery += ` and ListPrice le ${queryParams.maxListPrice}`;
+    }
 
-    // if (queryParams.priceDecreased) {
-    //   selectQuery += `,PriceDecreased=true`;
-    // }
     let url = "";
     if (queryParams.propertyType == "commercial") {
       url = commercial.properties.replace(
