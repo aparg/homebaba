@@ -73,12 +73,12 @@ const PropertyPage = ({ main_data }) => {
           }`}
         >
           <div
-            className={`flex flex-col flex-wrap${
+            className={`flex flex-row sm:gap-x-28 flex-wrap items-center bg-very-light-gray rounded-md p-4 ${
               isMobileView ? "gap-3" : "gap-0"
             }`}
           >
             <div className="flex flex-col space-y-2">
-              <h3 className="text-5xl font-bold">{price}</h3>
+              <h3 className="text-4xl font-semibold">{price}</h3>
               {/* <button onClick={sendNotes}>Go!</button> */}
               <div className="space-x-2 block sm:hidden">
                 <button className="bg-[#CC0B0B] p-1 text-white text-xs font-bold mt-1 sm:my-0 w-fit-content rounded-md">
@@ -90,58 +90,68 @@ const PropertyPage = ({ main_data }) => {
                   <span>{main_data.PropertySubType}</span>
                 </button>
               </div>
-            </div>
-            <h1 className="fs-6 mt-0 mb-1 text-lg">{fullAddress}</h1>
-            {/* <div>
-              <button className="bg-gray-200 mt-4 sm:py-1 px-2 text-black sm:text-xs font-semibold mb-1 w-fit-content rounded-md text-left py-[0.5px] text-[0.65rem]">
-                <span>
-                  Average price for {typeOwnSrchToName[main_data?.TypeOwnSrch]}{" "}
-                  properties in {main_data.City}: $
-                  {main_data.avg.toLocaleString()}
-                </span>
-              </button>
-            </div> */}
 
-            <div className="rounded-md flex items-center">
-              <div className="flex justify-content-center align-items-center gap-1 text-lg">
-                <img
-                  src="/property-page-img/bedrooms.svg"
-                  alt="bedrooms"
-                  className="w-4"
-                />{" "}
-                {main_data.BedroomsTotal} Bedroom
+              <div className="rounded-md flex items-center">
+                <div className="flex justify-content-center align-items-center gap-1 text-sm font-semibold text-gray-700">
+                  <img
+                    src="/property-page-img/bedrooms.svg"
+                    alt="bedrooms"
+                    className="w-4"
+                  />{" "}
+                  {main_data.BedroomsTotal} Bedroom
+                </div>
+                <span className="text-sm font-semibold text-gray-700 mx-1">
+                  |
+                </span>
+                <div className="flex justify-content-center align-items-center gap-1 text-sm font-semibold text-gray-700">
+                  <img
+                    src="/property-page-img/bathrooms.svg"
+                    alt="washrooms"
+                    className="w-4"
+                  />{" "}
+                  {main_data.BathroomsTotalInteger} Bathroom
+                </div>
+                {main_data.GarageParkingSpaces && (
+                  <>
+                    <span className="text-sm font-semibold text-gray-700">
+                      &nbsp;|&nbsp;
+                    </span>
+                    <div className="flex justify-content-center align-items-center gap-1 text-sm font-semibold text-gray-700 ">
+                      <img
+                        src="/property-page-img/garage.svg"
+                        alt="garages"
+                        className="w-3"
+                      />{" "}
+                      {Math.trunc(main_data.GarageParkingSpaces)} Garage
+                    </div>
+                  </>
+                )}
               </div>
-              <span className="text-lg mx-1">|</span>
-              <div className="flex justify-content-center align-items-center gap-1 text-lg">
-                <img
-                  src="/property-page-img/bathrooms.svg"
-                  alt="washrooms"
-                  className="w-4"
-                />{" "}
-                {main_data.BathroomsTotalInteger} Bathroom
-              </div>
-              {main_data.GarageParkingSpaces && (
-                <>
-                  <span className="text-lg">&nbsp;|&nbsp;</span>
-                  <div className="flex justify-content-center align-items-center gap-1 text-lg ">
-                    <img
-                      src="/property-page-img/garage.svg"
-                      alt="garages"
-                      className="w-3"
-                    />{" "}
-                    {Math.trunc(main_data.GarageParkingSpaces)} Garage
-                  </div>
-                </>
-              )}
+              <p className="card-subtitle my-1 font-normal text-lg">
+                MLS - #{main_data.ListingKey}{" "}
+              </p>
+              <h1 className="vmain-title">
+                <div className="uppercase bannerSection text-lg">
+                  {main_data.TransactionType}
+                </div>
+              </h1>
             </div>
-            <p className="card-subtitle my-1 font-normal text-lg">
-              MLS - #{main_data.ListingKey}{" "}
-            </p>
-            <h1 className="vmain-title">
-              <div className="uppercase bannerSection text-lg">
-                {main_data.TransactionType}
-              </div>
-            </h1>
+            <div className="flex flex-col h-full">
+              <h1 className="font-semibold mb-1 text-2xl">
+                {[
+                  main_data.StreetNumber,
+                  main_data.StreetName,
+                  main_data.StreetSuffix,
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              </h1>
+              <p className="text-left text-gray-600 tracking-wide">
+                {[main_data.City, main_data.Province, main_data.PostalCode]
+                  .filter((data) => !!data)
+                  .join(",")}
+              </p>
+            </div>
           </div>
         </div>
         {/* Description */}

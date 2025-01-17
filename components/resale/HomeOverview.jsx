@@ -39,7 +39,7 @@ const HomeOverview = ({ main_data }) => {
   return (
     <div className={`${isMobileView ? "pt-4 pb-4 mt-12" : "mt-12 pt-4 pb-4"}`}>
       <div className="p-4 rounded-md bg-very-light-gray  border-0">
-        <h2 className="font-extrabold pb-3 text-2xl sm:text-4xl">
+        <h2 className="font-semibold pb-3 text-2xl sm:text-3xl">
           Home Overview
         </h2>
         <div

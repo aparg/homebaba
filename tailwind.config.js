@@ -13,7 +13,7 @@ module.exports = {
         "light-lime": "#e1f6b2",
         "primary-red": "#eb7e6c",
         "medium-black": "#222222",
-        "very-light-gray": "#f9f9f9",
+        "very-light-gray": "#f2f2f2",
         "gray-filter": "#e5e7eb",
         "chat-active-card": "rgba(0, 0, 0, .06)",
         "chat-hover": "rgba(0,0,0,.04)",

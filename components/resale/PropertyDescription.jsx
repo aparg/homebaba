@@ -33,9 +33,9 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
   return (
     <div className={`${isMobileView ? "pt-4 mt-12" : "mt-12 pt-4"}`}>
       <div className="border-0 rounded-md bg-very-light-gray p-3 sm:p-4">
-        <div className="font-extrabold text-2xl sm:text-4xl">
+        <div className="font-semibold text-2xl sm:text-3xl">
           Property Description <br />
-          <h2 className="font-normal text-lg sm:text-2xl sm:mt-2 mb-1 sm:mb-3">
+          <h2 className="font-normal text-lg sm:text-xl sm:mt-2 mb-1 sm:mb-3">
             {fullAddress}
           </h2>
         </div>

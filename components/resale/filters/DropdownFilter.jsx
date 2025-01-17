@@ -64,7 +64,7 @@ const CustomDropdown = ({
   console.log(selectedValues);
   const label = () => {
     if (name == "priceRange") {
-      return selectedValues[0];
+      return selectedValues[0] || defaultValue;
     } else {
       return (
         Object.values(filterObj).find((obj) => obj.value == selectedValues[0])

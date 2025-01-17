@@ -105,8 +105,8 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         ? priceRangesSaleProperties[value]
         : priceRangesLeaseProperties[value];
     newFilterState[name] = {
-      min: priceRange.min,
-      max: priceRange.max,
+      min: priceRange?.min,
+      max: priceRange?.max,
     };
 
     scrollToFilters();
@@ -181,7 +181,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           type={filterState.type}
         />
 
-        <div className="rounded-full sm:mr-4">
+        <div className="rounded-full sm:mx-2">
           {isMobileView ? (
             <DropdownFilter
               options={bedCountOptions}
@@ -210,7 +210,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           )}
         </div>
 
-        <div className="rounded-full overflow-hidden sm:mr-4 hover:shadow-lg">
+        <div className="rounded-full overflow-hidden sm:mx-2 hover:shadow-lg">
           <DropdownFilter
             options={houseTypeOptions}
             defaultValue={
@@ -228,7 +228,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           />
         </div>
       </div>
-      <div className="flex justify-center sm:justify-start mt-4 sm:mt-0">
+      <div className="flex justify-center sm:justify-start mt-4 sm:mt-0 sm:mx-2">
         <DropdownFilter
           options={
             filterState.saleLease == saleLease.sale.name
