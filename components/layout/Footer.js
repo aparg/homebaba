@@ -40,6 +40,9 @@ const Footer = () => {
     { icon: "/icons/tiktok.png", link: "https://tiktok.com/@homebaba" },
   ];
 
+  let todaysutc = new Date().toUTCString();
+  let year_now = new Date().getFullYear();
+
   return (
     <footer className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-20">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
@@ -133,6 +136,47 @@ const Footer = () => {
         </div>
       </div>
 
+      <div className="mt-16 pt-8 border-t border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center space-y-4 gap-4">
+          <div className="flex flex-col items-center space-y-4">
+            <img src="/logo/trebb.png" alt="TREBB Logo" className="w-28" />
+            <p className="text-xs text-gray-500 max-w-2xl text-center">
+              Toronto Real Estate Board (TRREB); All information deemed reliable
+              but not guaranteed. All properties are subject to prior sale,
+              change or withdrawal. Neither listing broker(s) or information
+              provider(s) shall be responsible for any typographical errors,
+              misinformation, misprints and shall be held totally harmless.
+              Listing(s) information is provided for consumer's personal,
+              non-commercial use and may not be used for any purpose other than
+              to identify prospective properties consumers may be interested in
+              purchasing. The data relating to real estate for sale on this
+              website comes in part from the Internet Data Exchange program of
+              the Multiple Listing Service. Real estate listings held by
+              brokerage firms other than Dolphin Realty Inc. may be marked with
+              the Internet Data Exchange logo and detailed information about
+              those properties will include the name of the listing broker(s)
+              when required by the MLS. Copyright ©2025 All rights reserved.
+              Last Updated: {todaysutc} UTC
+            </p>
+          </div>
+          <div className="flex flex-col items-center space-y-4">
+            <img src="/logo/crea.png" alt="TREBB Logo" className="w-28" />
+            <p className="text-xs text-gray-500 max-w-2xl text-center">
+              The listing data displayed is deemed reliable but is not
+              guaranteed accurate by CREA®. Data last updated on {todaysutc} UTC
+              The trademarks REALTOR®, REALTORS®; and the REALTOR® logo are
+              controlled by The Canadian Real Estate Association (CREA®) and
+              identify real estate professionals who are members of CREA®. Used
+              under license. The trademarks MLS®, Multiple Listing Service® and
+              the associated logos are owned by The Canadian Real Estate
+              Association (CREA®) and identify the quality of services provided
+              by real estate professionals who are members of CREA®. Used under
+              license.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Social Links and Copyright */}
       <div className="mt-16 text-center">
         <div className="flex justify-center gap-8 mb-6">
@@ -154,7 +198,7 @@ const Footer = () => {
             </a>
           ))}
         </div>
-        <p className="text-sm text-gray-500">©2024 Homebaba</p>
+        <p className="text-sm text-gray-500">©{year_now} Homebaba</p>
       </div>
     </footer>
   );
