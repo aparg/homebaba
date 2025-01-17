@@ -192,11 +192,11 @@ export const priceRangesSaleProperties = {
   "$500K-$600K": { min: 500000, max: 600000 },
   "$600K-$700K": { min: 600000, max: 700000 },
   "$700K-$800K": { min: 700000, max: 800000 },
-  "$800K - 1mil": { min: 800000, max: 1000000 },
-  "1mil - 1.5mil": { min: 1000000, max: 1500000 },
-  "1.5mil - 2mil": { min: 1500000, max: 2000000 },
-  "2mil - 2.5mil": { min: 2000000, max: 2500000 },
-  "2mil and above": { min: 1000000, max: 0 }, //if max less than min, max is ignored
+  "$800K - $1mil": { min: 800000, max: 1000000 },
+  "$1mil - $1.5mil": { min: 1000000, max: 1500000 },
+  "$1.5mil - $2mil": { min: 1500000, max: 2000000 },
+  "$2mil - $2.5mil": { min: 2000000, max: 2500000 },
+  "$2mil and above": { min: 1000000, max: 0 }, //if max less than min, max is ignored
 };
 
 export const priceRangesLeaseProperties = {

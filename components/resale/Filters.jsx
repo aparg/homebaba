@@ -198,7 +198,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
               options={bedCountOptions}
               defaultValue="Beds"
               name="bed"
-              value={filterState.bed}
+              value={filterState.bed > 0 ? filterState.bed : "Beds"}
               setFilterState={setFilterState}
               handleFilterChange={handleFilterChange}
               isMulti={false}

@@ -57,7 +57,17 @@ const CustomDropdown = ({
     setSelectedValues(newValues);
     handleFilterChange(name, newValues.join(", ").replaceAll("_", " "));
   };
-
+  console.log(selectedValues);
+  const label = () => {
+    if (name == "priceRange") {
+      return selectedValues[0];
+    } else {
+      return (
+        Object.values(filterObj).find((obj) => obj.value == selectedValues[0])
+          ?.name || defaultValue
+      );
+    }
+  };
   return (
     <div className="inline-block" ref={dropdownRef}>
       <button
@@ -75,13 +85,8 @@ const CustomDropdown = ({
             hover:shadow-md transition-all text-center
           `}
       >
-        <span className="truncate">
-          {name != "priceRange"
-            ? Object.values(filterObj).find(
-                (obj) => obj.value == selectedValues
-              )?.name
-            : selectedValues[0] || defaultValue}
-        </span>
+        {console.log(selectedValues[0])}
+        <span className="truncate">{label()}</span>
         <FaChevronDown
           size={10}
           className={`ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`}
