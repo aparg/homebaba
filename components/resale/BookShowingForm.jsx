@@ -19,7 +19,7 @@ import { Avatar } from "../ui/avatar";
 import Image from "next/image";
 const BookShowingForm = ({ address }) => {
   return (
-    <div className="sticky top-20 z-0 w-full rounded-md bg-very-light-gray flex items-center sm:pt-8 sm:mt-0 shadow-2xl">
+    <div className="sticky top-20 z-0 w-full rounded-md bg-very-light-gray flex items-center sm:pt-2 sm:mt-0 shadow-2xl">
       <div className="flex sm:flex-row flex-col w-full overflow-hidden">
         {/* <div className="w-full sm:w-1/2">
           <img
@@ -33,7 +33,7 @@ const BookShowingForm = ({ address }) => {
           <section className="w-full flex flex-row justify-between">
             <div className="flex flex-row space-x-2 items-center">
               <Avatar className="w-12 h-12 bg-white" />
-              <div className="flex flex-col space-y-2 text-lg">
+              <div className="flex flex-col space-y-2 text-lg font-semibold">
                 John Doe
                 <button className="border-2 border-gray-600 rounded-md px-1 py-[0.15rem] uppercase tracking-wide text-xs">
                   Homebaba Agent
@@ -42,12 +42,12 @@ const BookShowingForm = ({ address }) => {
             </div>
 
             <div className="flex items-center flex-row">
-              <span className="text-xs md:text-lg font-bold">homebaba</span>
+              <span className="text-xs sm:text-sm font-bold">homebaba</span>
               <Image
                 src="/maple-leaf.svg"
                 alt="Maple Leaf Icon for Logo"
-                width={10}
-                height={10}
+                width={12}
+                height={12}
                 className="hidden md:block"
               />
               <Image
