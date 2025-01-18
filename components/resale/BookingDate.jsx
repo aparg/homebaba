@@ -6,6 +6,7 @@ import BookingDateOption from "./BookingDateOption";
 import TimingList from "./TimingList";
 import BookingType from "./BookingType";
 import DateSelector from "./DateSelector";
+
 const BookingDate = ({ bannerImage }) => {
   // const [scrollPosition, setScrollPosition] = useState(0);
   // const [maxScroll, setMaxScroll] = useState(0);
@@ -127,6 +128,7 @@ const BookingDate = ({ bannerImage }) => {
           <h1 className="font-bold text-3xl my-2 text-center">
             Schedule a viewing
           </h1>
+
           <DateSelector />
         </div>
       </div>
