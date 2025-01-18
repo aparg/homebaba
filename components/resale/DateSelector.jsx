@@ -195,7 +195,7 @@ const DateSelector = ({ showBookingType = true, address }) => {
             Name
           </label>
         </div>
-        <div className="relative mb-3 w-full">
+        <div className="relative mb-3 w-full border-gray-600">
           <input
             type="text"
             inputMode="numeric"

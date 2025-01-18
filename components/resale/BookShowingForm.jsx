@@ -71,13 +71,11 @@ const BookShowingForm = ({ address }) => {
                 <span>For all other questions, contact John Doe</span>
               </p>
 
-              <DialogTrigger>
-                <button className="px-10 bg-red-500 text-white font-semibold py-2 text-lg rounded-lg hover:bg-red-600">
-                  Book Now
-                </button>
+              <DialogTrigger className="px-10 bg-red-500 text-white font-semibold py-2 text-lg rounded-lg hover:bg-red-600 w-fit self-center">
+                Book Now
               </DialogTrigger>
             </div>
-            <DialogContent className="z-[9999] sm:z-auto">
+            <DialogContent className="z-[9999]">
               <DialogHeader>
                 <DialogTitle>
                   <div className="text-center text-2xl">Book a showing</div>
