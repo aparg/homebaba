@@ -11,8 +11,14 @@ import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
 import { getImageUrls } from "@/app/_resale-api/getSalesData";
 import { Spinner } from "@nextui-org/react";
 import Image from "next/image";
+import HotListings from "./HotListings";
 
-const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
+const ResaleCard = ({
+  curElem,
+  small = false,
+  showDecreasedPrice = false,
+  isHotListing,
+}) => {
   // const [address, setAddress] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
   const [imgUrl, setImgUrl] = useState(null);
@@ -156,6 +162,11 @@ const ResaleCard = ({ curElem, small = false, showDecreasedPrice = false }) => {
                       alt="washrooms"
                     />
                     <span>{curElem.ApproxSquareFootage} Sq.Ft.</span>
+                  </div>
+                )}
+                {isHotListing && (
+                  <div className="text-black text-[0.7rem] p-[3px] px-2 shadow-2xl rounded-md mx-1 bg-white items-center hidden sm:block">
+                    <span>🔥 New Listing</span>
                   </div>
                 )}
                 {/* <div className="text-black text-[0.7rem] p-[3px] px-2 shadow-2xl rounded-md mx-1 bg-white flex items-center">

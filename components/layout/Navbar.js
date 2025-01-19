@@ -176,8 +176,18 @@ const Navbar = () => {
       </div>
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center space-x-6">
-        <Dropdown name="Rent" text={"red"} options={rentOpts} width="auto" />
-        <Dropdown name="Buy" text={"red"} options={buyOpts} width="auto" />
+        <Dropdown
+          name="Rental Homes"
+          text={"red"}
+          options={rentOpts}
+          width="auto"
+        />
+        <Dropdown
+          name="Buy Homes"
+          text={"red"}
+          options={buyOpts}
+          width="auto"
+        />
         {navLinks.map((link) => (
           <Link
             key={link.label}

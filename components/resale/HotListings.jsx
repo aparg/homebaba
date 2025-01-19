@@ -33,10 +33,12 @@ const HotListings = ({ salesData, city = null }) => {
       className={`relative rounded-xl px-2 z-10 ${
         isMobileView ? "mt-3 mb-4" : "mt-4"
       }`}
-      style={{
-        backgroundColor: "#e8e8e8",
-        // "linear-gradient(90deg, rgb(255,203,171) 0px, rgb(249,194,189))",
-      }}
+      style={
+        {
+          // backgroundColor: "#e8e8e8",
+          // "linear-gradient(90deg, rgb(255,203,171) 0px, rgb(249,194,189))",
+        }
+      }
     >
       <div className="w-full flex flex-row justify-between">
         <h3
@@ -70,6 +72,7 @@ const HotListings = ({ salesData, city = null }) => {
                 // city={formattedCity}
                 key={index}
                 curElem={curElem}
+                isHotListing={true}
               />
             );
             // }
