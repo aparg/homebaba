@@ -113,12 +113,12 @@ const page = async ({ params }) => {
               <div className="hidden sm:block relative w-full">
                 <Gallery data={imageURLs} />
                 <div className="space-x-2 order-2 sm:order-1 absolute bottom-2 left-2">
-                  <button className="bg-[#CC0B0B] p-1 text-white text-xs font-bold mt-1 mb-2 sm:my-0 w-fit-content rounded-md">
+                  <button className="bg-black p-1 text-white text-xs font-bold mt-1 mb-2 sm:my-0 w-fit-content rounded-md">
                     <TimeAgo
                       modificationTimestamp={main_data.OriginalEntryTimestamp}
                     />
                   </button>
-                  <button className="bg-[#CC0B0B] p-1 text-white text-xs font-bold mt-1 mb-2 sm:my-0 w-fit-content rounded-md">
+                  <button className="bg-black p-1 text-white text-xs font-bold mt-1 mb-2 sm:my-0 w-fit-content rounded-md">
                     <span>{main_data.PropertySubType}</span>
                   </button>
                 </div>

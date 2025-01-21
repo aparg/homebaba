@@ -181,7 +181,7 @@ const ResaleCard = ({
                     <span> /mo</span>
                   )}
                 </h2>
-                <div className="text-xs font-medium text-[#CC0B0B] mb-1 sm:mb-0">
+                <div className="text-xs font-medium text-blackmb-1 sm:mb-0">
                   <TimeAgo
                     modificationTimestamp={curElem.OriginalEntryTimestamp}
                   />
