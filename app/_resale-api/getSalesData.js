@@ -143,7 +143,7 @@ export const getImageUrls = async ({ MLS, thumbnailOnly = false }) => {
 
     let imageLink = residential.photos;
 
-    if (thumbnailOnly) imageLink += " and ImageSizeDescription eq 'Large'";
+    if (thumbnailOnly) imageLink += " and ImageSizeDescription eq 'Medium'";
     else imageLink += " and ImageSizeDescription eq 'Largest'";
 
     const response = await fetch(imageLink.replace("MLS", MLS), options);
