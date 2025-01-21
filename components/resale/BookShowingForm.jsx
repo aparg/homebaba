@@ -12,8 +12,10 @@ import {
 import {
   Calendar,
   CalendarDays,
+  CircleUserRound,
   MessageCircle,
   MessageSquareText,
+  UserCircle,
 } from "lucide-react";
 import { Avatar } from "../ui/avatar";
 import Image from "next/image";
@@ -32,11 +34,18 @@ const BookShowingForm = ({ address }) => {
           {/**Schedule a viewing form */}
           <section className="w-full flex flex-row justify-between">
             <div className="flex flex-row space-x-2 items-center">
-              <Avatar className="w-12 h-12 bg-white" />
+              {/* <Image width={20} height={20} /> */}
+              {/* <Avatar className="w-12 h-12 bg-white" /> */}
+              <div className="bg-white rounded-full">
+                <img
+                  src="/icons/avatar.webp"
+                  className="w-12 h-12 rounded-full"
+                />
+              </div>
               <div className="flex flex-col space-y-2 text-lg font-semibold">
-                John Doe
+                {/* John Doe */}
                 <button className="border-2 border-gray-600 rounded-md px-1 py-[0.15rem] uppercase tracking-wide text-xs">
-                  Homebaba Agent
+                  Agent
                 </button>
               </div>
             </div>
@@ -68,7 +77,7 @@ const BookShowingForm = ({ address }) => {
               </p>
               <p className="flex justify-start space-x-3">
                 <MessageSquareText />{" "}
-                <span>For all other questions, contact John Doe</span>
+                <span>For all other questions, contact us</span>
               </p>
 
               <DialogTrigger className="px-10 bg-red-500 text-white font-semibold py-2 text-lg rounded-lg hover:bg-red-600 w-fit self-center">

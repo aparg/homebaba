@@ -203,13 +203,13 @@ const FiltersWithSalesList = ({
             isMobileView ? "pt-2" : "pt-2"
           }`}
         >
-          100+ {getTitle()} | Homebaba.ca
+          100+ {getTitle()} | homebaba
         </h1>
         <h2
           className="text-sm mb-5 mt-1 text-center sm:text-left"
           style={isMobileView ? { fontSize: "0.9rem" } : {}}
         >
-          500+ {capitalizeFirstLetter(city)}{" "}
+          100+ {capitalizeFirstLetter(city)}{" "}
           {capitalizeFirstLetter(requiredType) || ""} homes for{" "}
           {saleLeaseVal?.toLowerCase() == "lease" ? "Rent or Lease" : "sale"}.
           Book a showing for affordable homes with pools, finished basements,
