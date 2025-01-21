@@ -80,7 +80,7 @@ const BookShowingForm = ({ address }) => {
                 <span>For all other questions, contact us</span>
               </p>
 
-              <DialogTrigger className="px-10 bg-red-500 text-white font-semibold py-2 text-lg rounded-lg hover:bg-red-600 w-fit self-center">
+              <DialogTrigger className="px-10 bg-black text-white font-semibold py-2 text-lg rounded-lg hover:bg-red-600 w-fit self-center">
                 Book Now
               </DialogTrigger>
             </div>
