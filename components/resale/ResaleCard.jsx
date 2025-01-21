@@ -12,6 +12,7 @@ import { getImageUrls } from "@/app/_resale-api/getSalesData";
 import { Spinner } from "@nextui-org/react";
 import Image from "next/image";
 import HotListings from "./HotListings";
+import { Skeleton } from "../ui/skeleton";
 
 const ResaleCard = ({
   curElem,
@@ -127,7 +128,7 @@ const ResaleCard = ({
                 } sm:h-80 relative z-10 rounded-t-2xl`}
               >
                 {loadingImage ? (
-                  <Spinner />
+                  <Skeleton className="object-cover w-full h-full rounded-t-2xl" />
                 ) : imgUrl ? (
                   <img
                     className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110 rounded-t-2xl"
