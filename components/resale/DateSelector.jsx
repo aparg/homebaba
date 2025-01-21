@@ -127,7 +127,7 @@ const DateSelector = ({ showBookingType = true, address }) => {
     <div>
       {showBookingType && (
         <div className="flex justify-center items-center">
-          <span className="tour-type rounded-full bg-light-lime px-1 py-1 mt-2 mb-6">
+          <span className="tour-type rounded-full bg-light-lime px-1 py-1 mt-2 mb-0">
             <BookingType handleChange={handleChange} />
           </span>
         </div>
@@ -161,7 +161,7 @@ const DateSelector = ({ showBookingType = true, address }) => {
         {/* <div className="text-md text-center my-2 text-gray-700">
               No obligation or purchase necessary, cancel at any time
             </div> */}
-        <div className="relative mb-1 mt-4 w-full">
+        <div className="relative mb-1 mt-2 w-full">
           <input
             type="text"
             name="name"
@@ -170,7 +170,7 @@ const DateSelector = ({ showBookingType = true, address }) => {
             value={timing.name}
             onChange={(e) => handleChange(e)}
             required={true}
-            className="rounded-full bg-white mt-4 fff w-full px-4 pt-5 pb-1 border-b-2 focus:outline-none peer/bookshowingName placeholder:translate-y-1/2 placeholder:scale-100"
+            className="rounded-full bg-white mt-4 fff w-full px-4 pt-5 pb-1 border-b-2 focus:outline-none peer/bookshowingName placeholder:translate-y-1/2 placeholder:scale-100  border-2"
           />
           <label
             htmlFor="name"
@@ -189,7 +189,7 @@ const DateSelector = ({ showBookingType = true, address }) => {
             value={timing.phoneNumber}
             onChange={(e) => handleChange(e)}
             required={true}
-            className="rounded-full bg-white mt-4 fff w-full px-4 pt-5 pb-1 border-b-2 focus:outline-none peer/bookshowingPhone placeholder:translate-y-1/2 placeholder:scale-100 "
+            className="rounded-full bg-white mt-4 fff w-full px-4 pt-5 pb-1 border-b-2 focus:outline-none peer/bookshowingPhone placeholder:translate-y-1/2 placeholder:scale-100 border-2"
           />
           <label
             htmlFor="phoneNumber"
