@@ -191,7 +191,7 @@ const FiltersWithSalesList = ({
             : "for Sale",
         ].join(" ") + " "}{" "}
         in
-        {city ? ` ${capitalizeFirstLetter(city)}` : ""}
+        {city ? ` ${capitalizeFirstLetter(city)}, ON` : ""}
       </>
     );
   };
@@ -203,7 +203,7 @@ const FiltersWithSalesList = ({
             isMobileView ? "pt-2" : "pt-2"
           }`}
         >
-          100+ {getTitle()} | homebaba
+          {getTitle()}
         </h1>
         <h2
           className="text-sm mb-5 mt-1 text-center sm:text-left"
@@ -212,8 +212,7 @@ const FiltersWithSalesList = ({
           100+ {capitalizeFirstLetter(city)}{" "}
           {capitalizeFirstLetter(requiredType) || ""} homes for{" "}
           {saleLeaseVal?.toLowerCase() == "lease" ? "Rent or Lease" : "sale"}.
-          Book a showing for affordable homes with pools, finished basements,
-          walkouts. Prices from $1 to $5,000,000. Open houses available.
+          Prices from $1 to $5,000,000. Open houses available.
         </h2>
 
         <div
