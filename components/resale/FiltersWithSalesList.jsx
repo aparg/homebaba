@@ -191,7 +191,7 @@ const FiltersWithSalesList = ({
             : "for Sale",
         ].join(" ") + " "}{" "}
         in
-        {city ? ` ${capitalizeFirstLetter(city)}, ON` : ""}
+        {city ? ` ${capitalizeFirstLetter(city)}, ON` : " Ontario"}
       </>
     );
   };
