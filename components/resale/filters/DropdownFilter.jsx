@@ -89,7 +89,7 @@ const CustomDropdown = ({
         onClick={() => setIsOpen(!isOpen)}
         className={`
             flex items-center justify-between
-            capitalize text-xs h-8 border-[#b2b2b2] tracking-[0.01125]
+            capitalize text-sm h-8 border-[#b2b2b2] tracking-[0.01125]
             rounded-full px-3 border-[1px] font-semibold 
             ${isMobileView ? "px-s gap-1 min-w-[40px]" : "min-w-[120px]"}
             ${
