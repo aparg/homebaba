@@ -195,7 +195,7 @@ const ResaleCard = ({
               <span className={`text-black text-xs`}>
                 <div className="flex flex-row justify-start">
                   {curElem.BedroomsTotal && (
-                    <div className="flex items-center mr-3">
+                    <div className="flex items-center mr-1">
                       <img
                         src="/resale-card-img/bedrooms.svg"
                         className="w-3 mr-[2px] inline"
@@ -208,7 +208,7 @@ const ResaleCard = ({
                     </div>
                   )}
                   {curElem.BathroomsTotalInteger && (
-                    <div className="flex items-center mr-3">
+                    <div className="flex items-center mr-1">
                       <img
                         src="/resale-card-img/bathrooms.svg"
                         className="w-3 mr-[2px] inline"
@@ -220,7 +220,7 @@ const ResaleCard = ({
                       </span>
                     </div>
                   )}
-                  {curElem.GarageParkingSpaces && (
+                  {/* {curElem.GarageParkingSpaces && (
                     <div className="flex items-center mr-3">
                       <img
                         src="/resale-card-img/garage.svg"
@@ -232,12 +232,26 @@ const ResaleCard = ({
                         <span className="hidden sm:inline">Garage</span>
                       </span>
                     </div>
-                  )}
+                  )} */}
+                  {curElem.BuildingAreaTotal &&
+                    Number(curElem.BuildingAreaTotal) > 0 && (
+                      <div>
+                        <img
+                          src="/resale-card-img/ruler.svg"
+                          className="w-3 mr-[2px] inline"
+                          alt="washrooms"
+                        />
+                        <span>
+                          {Math.floor(curElem.BuildingAreaTotal)}{" "}
+                          <span className="hidden sm:inline">Sq. Ft.</span>
+                        </span>
+                      </div>
+                    )}
                 </div>
               </span>
               <div className="flex flex-row justify-between my-1">
                 <div className="text-black">
-                  <div className="text-dark text-sm">
+                  <div className="text-dark text-xs">
                     {curElem.StreetName ? (
                       `${curElem.StreetNumber} ${curElem.StreetName}${" "}
                     ${curElem.StreetSuffix} ${curElem.City}, Ontario`

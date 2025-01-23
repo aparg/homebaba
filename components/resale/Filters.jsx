@@ -17,6 +17,7 @@ import {
   priceRangesSaleProperties,
   priceRangesLeaseProperties,
   basementType,
+  Roads,
 } from "@/constant";
 
 import useDeviceView from "@/helpers/useDeviceView";
@@ -27,6 +28,7 @@ import { generateURL } from "@/helpers/generateResaleURL";
 import { IndividualFilterButton } from "./filters/IndividualFilterButton";
 import { DropdownFilter } from "./filters/DropdownFilter";
 import { IndividualLinkedFilterButton } from "./filters/IndividualLinkedFilterButton";
+import { ChartNoAxesCombined } from "lucide-react";
 // import Dropdown from "./Dropdown";
 
 const bgColor = {
@@ -252,6 +254,23 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         handleFilterChange={handleFilterChange}
         filterObj={basementType}
       />
+      <IndividualFilterButton
+        name="Roads"
+        options={Object.keys(Roads)}
+        value={null}
+        handleFilterChange={handleFilterChange}
+        filterObj={basementType}
+      />
+      <div
+        className={`mx-[2px] px-2 sm:px-3 h-8 border-[#b2b2b2] border-[1px] tracking-[0.01125] cursor-pointer text-nowrap flex justify-center items-center rounded-full hover:shadow-lg text-xs font-semibold
+             bg-[#fcdaf4] text-black
+             `}
+        onClick={() => handleClick(name, option)}
+        // style={{ border: "2px solid #e5e7eb" }}
+      >
+        <ChartNoAxesCombined className="w-3 h-3 mr-1" />
+        Market Data
+      </div>
     </>
   );
 };

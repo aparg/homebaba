@@ -225,3 +225,8 @@ export const basementType = {
   Walkout: "Walk-Out",
   "Finished Basement": "Finished",
 };
+
+export const Roads = {
+  "Public Transit": "Public Transit",
+  Highway: "Highway",
+};

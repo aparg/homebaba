@@ -1,12 +1,15 @@
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Inter } from "next/font/google";
+import { Inter, Poppins, Roboto } from "next/font/google";
 import NewsLetter from "@/components/NewsLetter";
 import NextTopLoader from "nextjs-toploader";
 import "leaflet/dist/leaflet.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "900"],
+});
 
 export const metadata = {
   title: "Create Next App",
