@@ -199,8 +199,8 @@ const FiltersWithSalesList = ({
     <>
       <div className="">
         <h1
-          className={`font-extrabold text-2xl text-center sm:text-left ${
-            isMobileView ? "pt-2" : "pt-2"
+          className={`font-extrabold text-3xl text-center sm:text-left ${
+            isMobileView ? "pt-2" : "pt-6"
           }`}
         >
           {getTitle()}

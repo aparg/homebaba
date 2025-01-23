@@ -46,9 +46,7 @@ const HotListings = ({ salesData, city = null }) => {
             isMobileView ? "pt-3" : "pt-3"
           }`}
         >
-          Newest Arrival -{" "}
-          {city ? `${capitalizeFirstLetter(city)} homes` : "Homes"} listed for
-          sale in past 24 hours
+          Newest Arrival
         </h3>
       </div>
       {/* <div className="w-full absolute top-[-50px] z-[999]">

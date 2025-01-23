@@ -91,10 +91,10 @@ const CustomDropdown = ({
             flex items-center justify-between
             capitalize text-xs h-8 border-[#b2b2b2] tracking-[0.01125]
             rounded-full px-3 border-[1px] font-semibold 
-            ${isMobileView ? "px-1 gap-1 min-w-[40px]" : "min-w-[120px]"}
+            ${isMobileView ? "px-s gap-1 min-w-[40px]" : "min-w-[120px]"}
             ${
               optionSelected
-                ? `bg-black text-white border-black`
+                ? `bg-[#fcdaf4] text-black border-black`
                 : "border-gray-300 text-gray-700 bg-white "
             }
             hover:shadow-md transition-all text-center

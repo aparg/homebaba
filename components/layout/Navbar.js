@@ -176,14 +176,9 @@ const Navbar = () => {
       </div>
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center space-x-6">
+        <Dropdown name="Lease" text={"red"} options={rentOpts} width="auto" />
         <Dropdown
-          name="Rental Homes"
-          text={"red"}
-          options={rentOpts}
-          width="auto"
-        />
-        <Dropdown
-          name="Buy Homes"
+          name="Resale Homes"
           text={"red"}
           options={buyOpts}
           width="auto"
