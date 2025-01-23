@@ -200,13 +200,13 @@ const FiltersWithSalesList = ({
       <div className="">
         <h1
           className={`font-extrabold text-3xl text-center sm:text-left ${
-            isMobileView ? "pt-2" : "pt-6"
+            isMobileView ? "pt-2" : "pt-0"
           }`}
         >
           {getTitle()}
         </h1>
         <h2
-          className="text-sm mb-5 mt-1 text-center sm:text-left"
+          className="text-sm mb-2 mt-1 text-center sm:text-left"
           style={isMobileView ? { fontSize: "0.9rem" } : {}}
         >
           100+ {capitalizeFirstLetter(city)}{" "}
@@ -216,10 +216,9 @@ const FiltersWithSalesList = ({
         </h2>
 
         <div
-          className="flex sticky top-[4rem] z-50 bg-white items-center w-full flex-wrap overflow-visible justify-center sm:justify-normal"
+          className="flex sticky top-[1rem] z-50 bg-white items-center w-full flex-wrap overflow-visible justify-center sm:justify-normal"
           id="filter"
         >
-          {console.log(filterState)}
           <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
         </div>
 
@@ -232,7 +231,7 @@ const FiltersWithSalesList = ({
             {selected === 1 && <HotListings salesData={hotSales} city={city} />}
             <div
               className={`${
-                isMobileView ? "pt-1" : "pt-3"
+                isMobileView ? "pt-1" : "pt-1"
               } grid grid-cols-2 md:grid-cols-4 xs:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-0 gap-x-2 gap-y-4 md:gap-x-2 sm:gap-y-[40px]`}
             >
               <SalesList

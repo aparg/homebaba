@@ -31,7 +31,7 @@ const HotListings = ({ salesData, city = null }) => {
   return salesData?.length > 0 ? (
     <div
       className={`relative rounded-xl px-2 z-10 ${
-        isMobileView ? "mt-3 mb-4" : "mt-4"
+        isMobileView ? "mt-3 mb-4" : "mt-2"
       }`}
       style={
         {
@@ -40,7 +40,7 @@ const HotListings = ({ salesData, city = null }) => {
         }
       }
     >
-      <div className="w-full flex flex-row justify-between">
+      {/* <div className="w-full flex flex-row justify-between">
         <h3
           className={`text-lg sm:text-2xl font-bold mb-1 text-center sm:text-left px-2 sm:px-0 ${
             isMobileView ? "pt-3" : "pt-3"
@@ -48,7 +48,7 @@ const HotListings = ({ salesData, city = null }) => {
         >
           Newest Arrival
         </h3>
-      </div>
+      </div> */}
       {/* <div className="w-full absolute top-[-50px] z-[999]">
         <Image
           src="/hot-listings.png"

@@ -166,7 +166,7 @@ const ResaleCard = ({
                   </div>
                 )}
                 {isHotListing && (
-                  <div className="text-black text-[0.7rem] p-[3px] px-2 shadow-2xl rounded-md mx-1 bg-white items-center hidden sm:block">
+                  <div className="text-black text-[0.7rem] p-[3px] px-2 shadow-2xl rounded-md mx-1 bg-[#fcdaf4] items-center hidden sm:block">
                     <span>🔥 New Listing</span>
                   </div>
                 )}
