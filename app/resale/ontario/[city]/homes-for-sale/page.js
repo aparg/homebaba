@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 import { getSalesData } from "@/app/_resale-api/getSalesData";
 import FiltersWithSalesList from "@/components/resale/FiltersWithSalesList";
+import CityTitle from "@/components/resale/CityTitle";
 
 const INITIAL_LIMIT = 30;
 const page = async ({ params }) => {
@@ -16,6 +17,7 @@ const page = async ({ params }) => {
       <div className="container-fluid mt-4">
         <div className="">
           <div className="">
+            <CityTitle city={city} saleLeaseVal={saleLeaseVal} />
             <FiltersWithSalesList
               {...{ salesListData, INITIAL_LIMIT, city, saleLeaseVal }}
             />

@@ -3,6 +3,7 @@ import { houseType, saleLease } from "@/constant";
 import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 import FiltersWithSalesList from "@/components/resale/FiltersWithSalesList";
 import { plural } from "@/constant/plural";
+import CityTitle from "@/components/resale/CityTitle";
 
 const page = async ({ params }) => {
   let saleLeaseValue;
@@ -24,6 +25,11 @@ const page = async ({ params }) => {
   if (isValidSlug)
     return (
       <div className="container-fluid">
+        <CityTitle
+          city={city}
+          requiredType={type}
+          saleLeaseVal={saleLeaseValue}
+        />
         <FiltersWithSalesList
           {...{
             city,

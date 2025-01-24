@@ -178,48 +178,9 @@ const FiltersWithSalesList = ({
     fetchFilteredData(initialState, 20, selected * 20 - 20);
   }, [selected]);
 
-  const homeText = !requiredType
-    ? "Homes"
-    : !requiredType?.toLowerCase().includes("house")
-    ? "Homes"
-    : "";
-
-  const getTitle = () => {
-    return (
-      <>
-        {[
-          totalPropertyCount,
-          capitalizeFirstLetter(requiredType),
-          homeText,
-          capitalizeFirstLetter(saleLeaseVal)?.toLowerCase() == "for lease"
-            ? "for Rent"
-            : "for Sale",
-        ].join(" ") + " "}{" "}
-        in
-        {city ? ` ${capitalizeFirstLetter(city)}` : " Ontario"}
-      </>
-    );
-  };
   return (
     <>
       <div className="">
-        <h1
-          className={`font-extrabold text-3xl text-center sm:text-left ${
-            isMobileView ? "pt-2" : "pt-0"
-          }`}
-        >
-          {getTitle()}
-        </h1>
-        <h2
-          className="text-sm mb-2 mt-1 text-center sm:text-left"
-          style={isMobileView ? { fontSize: "0.9rem" } : {}}
-        >
-          {capitalizeFirstLetter(city)}{" "}
-          {capitalizeFirstLetter(requiredType) || ""} homes for{" "}
-          {saleLeaseVal?.toLowerCase() == "lease" ? "Rent or Lease" : "sale"}.
-          Prices from $1 to $5,000,000. Open houses available.
-        </h2>
-
         <div
           className="flex sticky top-[1rem] z-50 bg-white items-center w-full flex-wrap overflow-visible justify-center sm:justify-normal"
           id="filter"

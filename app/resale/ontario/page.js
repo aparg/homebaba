@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { ImSpinner } from "react-icons/im";
 import Breadcrumbs from "@/components/resale/Breadcrumbs";
 import CanadianCitiesShowcase from "@/components/resale/CanadianCitiesShowcase";
+import CityTitle from "@/components/resale/CityTitle";
 
 const FiltersWithSalesList = dynamic(
   () => import("@/components/resale/FiltersWithSalesList"),
@@ -27,10 +28,12 @@ const page = async ({ params }) => {
     { label: "Lowrise", href: "/" },
     { label: "ON", href: null },
   ];
+
   return (
     <div className="">
       <Breadcrumbs items={breadcrumbItems} />
       <div className="container-fluid">
+        <CityTitle />
         <FiltersWithSalesList
           {...{
             INITIAL_LIMIT,

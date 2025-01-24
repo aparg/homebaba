@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 import { getSalesData } from "@/app/_resale-api/getSalesData";
 import { ImSpinner } from "react-icons/im";
+import CityTitle from "@/components/resale/CityTitle";
 
 const FiltersWithSalesList = dynamic(
   () => import("@/components/resale/FiltersWithSalesList"),
@@ -27,6 +28,7 @@ const page = async ({ params }) => {
       <div className="container-fluid mt-4">
         <div className="">
           <div className="">
+            <CityTitle city={city} saleLeaseVal={saleLeaseVal} />
             <FiltersWithSalesList
               {...{ salesListData, INITIAL_LIMIT, city, saleLeaseVal }}
             />

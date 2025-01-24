@@ -3,14 +3,17 @@ import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 import { commercial, residential } from "./routes/fetchRoutes";
 // import { houseType, saleLease } from "@/constant";
 
-export const getPropertiesCount = async ({ propertyType, city }) => {
+export const getPropertiesCount = async ({ propertyType, city, saleLease }) => {
   const queryArray = [];
   queryArray.push("StandardStatus eq 'Active'");
   if (propertyType) {
     queryArray.push(`PropertySubType eq '${propertyType}'`);
   }
   if (city) {
-    queryArray.push(`City eq '${city}'`);
+    queryArray.push(`City eq '${capitalizeFirstLetter(city)}'`);
+  }
+  if (saleLease) {
+    queryArray.push(`TransactionType eq '${saleLease}'`);
   }
 
   const url = residential.count.replace(
