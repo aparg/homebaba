@@ -18,23 +18,7 @@ const HomeOverview = ({ main_data }) => {
     }
   };
   const getCommunityFeatures = () => {
-    const {
-      PropertyFeatures1,
-      PropertyFeatures2,
-      PropertyFeatures3,
-      PropertyFeatures4,
-      PropertyFeatures5,
-      PropertyFeatures6,
-    } = main_data;
-
-    return [
-      PropertyFeatures1,
-      PropertyFeatures2,
-      PropertyFeatures3,
-      PropertyFeatures4,
-      PropertyFeatures5,
-      PropertyFeatures6,
-    ].join(", ");
+    return main_data?.PropertyFeatures.join(", ");
   };
   return (
     <div className={`${isMobileView ? "pt-4 pb-4 mt-12" : "mt-12 pt-4 pb-4"}`}>

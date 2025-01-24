@@ -9,7 +9,10 @@ import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 
 //CONSTANT
 import { bedCount, saleLease, houseType, washroomCount } from "@/constant";
-import { getFilteredRetsData } from "@/app/_resale-api/getSalesData";
+import {
+  getFilteredRetsData,
+  getPropertiesCount,
+} from "@/app/_resale-api/getSalesData";
 import useDeviceView from "@/helpers/useDeviceView";
 import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
 import { ImSpinner } from "react-icons/im";
@@ -18,6 +21,7 @@ import PageSelector from "./PageSelector";
 import Image from "next/image";
 import { FadeLoader } from "react-spinners";
 import { useClientFilter } from "@/hooks/use-client-filter";
+import { usePropertyCount } from "@/hooks/use-property-count";
 // import formatCurrency from "@/helpers/formatCurrency";
 // import FilterSubmit from "../FilterSubmit";
 
@@ -47,6 +51,7 @@ const FiltersWithSalesList = ({
     },
     type: houseTypeFilterVal,
     Basement: [],
+    Roads: [],
     washroom: washroomCount.any.value,
     priceDecreased: null,
     city: city,
@@ -62,7 +67,7 @@ const FiltersWithSalesList = ({
     if (city) storedState.city = city;
   }
   const [filterState, setFilterState] = useState(initialState);
-
+  const totalPropertyCount = usePropertyCount(city, requiredType);
   const [salesData, setSalesData] = useState(salesListData);
   const [clientFilteredData, isClientFiltered] = useClientFilter(
     salesData,
@@ -72,7 +77,6 @@ const FiltersWithSalesList = ({
   const { isMobileView } = useDeviceView();
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(1); //the page that is selected
-
   const separateSalesData = (salesData) => {
     if (selected == 1) {
       // Get the current date and time
@@ -184,6 +188,7 @@ const FiltersWithSalesList = ({
     return (
       <>
         {[
+          totalPropertyCount,
           capitalizeFirstLetter(requiredType),
           homeText,
           capitalizeFirstLetter(saleLeaseVal)?.toLowerCase() == "for lease"
@@ -209,7 +214,7 @@ const FiltersWithSalesList = ({
           className="text-sm mb-2 mt-1 text-center sm:text-left"
           style={isMobileView ? { fontSize: "0.9rem" } : {}}
         >
-          100+ {capitalizeFirstLetter(city)}{" "}
+          {capitalizeFirstLetter(city)}{" "}
           {capitalizeFirstLetter(requiredType) || ""} homes for{" "}
           {saleLeaseVal?.toLowerCase() == "lease" ? "Rent or Lease" : "sale"}.
           Prices from $1 to $5,000,000. Open houses available.

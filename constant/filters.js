@@ -226,7 +226,7 @@ export const basementType = {
   "Finished Basement": "Finished",
 };
 
-export const Roads = {
+export const roads = {
   "Public Transit": "Public Transit",
   Highway: "Highway",
 };

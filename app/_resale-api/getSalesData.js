@@ -3,6 +3,32 @@ import capitalizeFirstLetter from "@/helpers/capitalizeFirstLetter";
 import { commercial, residential } from "./routes/fetchRoutes";
 // import { houseType, saleLease } from "@/constant";
 
+export const getPropertiesCount = async ({ propertyType, city }) => {
+  const queryArray = [];
+  queryArray.push("StandardStatus eq 'Active'");
+  if (propertyType) {
+    queryArray.push(`PropertySubType eq '${propertyType}'`);
+  }
+  if (city) {
+    queryArray.push(`City eq '${city}'`);
+  }
+
+  const url = residential.count.replace(
+    "$query",
+    "$filter=" + queryArray.join(" and ")
+  );
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: process.env.BEARER_TOKEN_FOR_API,
+    },
+    // cache: "no-store",
+  };
+  console.log(url);
+  const response = await fetch(url, options);
+  const jsonResponse = await response.json();
+  return jsonResponse;
+};
 export const getSalesData = async (offset, limit, city, listingType) => {
   try {
     let filterQuery = `${
