@@ -24,7 +24,6 @@ export const getPropertiesCount = async ({ propertyType, city }) => {
     },
     // cache: "no-store",
   };
-  console.log(url);
   const response = await fetch(url, options);
   const jsonResponse = await response.json();
   return jsonResponse;
@@ -140,7 +139,6 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
-    console.log(url);
     const res = await fetch(url, options);
 
     const data = await res.json();
@@ -169,11 +167,21 @@ export const getImageUrls = async ({ MLS, thumbnailOnly = false }) => {
 
     let imageLink = residential.photos;
 
-    if (thumbnailOnly) imageLink += " and ImageSizeDescription eq 'Medium'";
+    if (thumbnailOnly)
+      imageLink +=
+        " and ImageSizeDescription eq 'Medium' and PreferredPhotoYN eq true";
     else imageLink += " and ImageSizeDescription eq 'Largest'";
 
-    const response = await fetch(imageLink.replace("MLS", MLS), options);
-    const jsonResponse = await response.json();
+    let response = await fetch(imageLink.replace("MLS", MLS), options);
+    let jsonResponse = await response.json();
+    if (jsonResponse.value.length == 0 && thumbnailOnly) {
+      response = await fetch(
+        residential.photos.replace("MLS", MLS) +
+          " and ImageSizeDescription eq 'Medium'",
+        options
+      );
+      jsonResponse = await response.json();
+    }
     const urls = jsonResponse.value.map((data) => data.MediaURL);
     return urls;
   }

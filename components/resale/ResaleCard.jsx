@@ -80,12 +80,13 @@ const ResaleCard = ({
     }
     setLoadingImage(true);
     getImageUrls({ MLS: curElem.ListingKey, thumbnailOnly: true }).then(
-      (url) => {
-        setImgUrl(url[0]);
+      (urls) => {
+        setImgUrl(urls[0]);
         setLoadingImage(false);
       }
     );
   }, []);
+
   const toggleFavorite = (e) => {
     e.stopPropagation();
     e.preventDefault();

@@ -80,9 +80,6 @@ const CustomDropdown = ({
       Object.values(filterObj).find((obj) => !obj.value).value
     );
   };
-  {
-    console.log(value);
-  }
   return (
     <div className="inline-block" ref={dropdownRef}>
       <button

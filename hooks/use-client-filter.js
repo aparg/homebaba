@@ -37,8 +37,6 @@ export const useClientFilter = (salesData, filterState) => {
   };
 
   useEffect(() => {
-    console.log("Client filtering");
-    console.log(filterState);
     clientFiltering();
   }, [filterState.Basement, filterState.Roads]);
 
