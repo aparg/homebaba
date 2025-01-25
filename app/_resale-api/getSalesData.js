@@ -31,7 +31,13 @@ export const getPropertiesCount = async ({ propertyType, city, saleLease }) => {
   const jsonResponse = await response.json();
   return jsonResponse;
 };
-export const getSalesData = async (offset, limit, city, listingType) => {
+export const getSalesData = async (
+  offset,
+  limit,
+  city,
+  listingType,
+  soldData = false
+) => {
   try {
     let filterQuery = `${
       city && `contains(City,'${city || ""}') and `
@@ -50,7 +56,9 @@ export const getSalesData = async (offset, limit, city, listingType) => {
     const options = {
       method: "GET",
       headers: {
-        Authorization: process.env.BEARER_TOKEN_FOR_API,
+        Authorization: !soldData
+          ? process.env.BEARER_TOKEN_FOR_API
+          : process.env.BEARER_TOKEN_FOR_VOW,
       },
     };
     if (listingType) {
@@ -124,6 +132,7 @@ export const getFilteredRetsData = async (queryParams) => {
     }
 
     let url = "";
+
     if (queryParams.propertyType == "commercial") {
       url = commercial.properties.replace(
         "$query",
@@ -142,6 +151,7 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
+    console.log(url);
     const res = await fetch(url, options);
 
     const data = await res.json();

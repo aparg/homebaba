@@ -73,13 +73,29 @@ const PropertyPage = ({ main_data }) => {
           }`}
         >
           <div
-            className={`flex flex-row sm:gap-x-28 flex-wrap items-center bg-very-light-gray rounded-md p-4 ${
+            className={`flex flex-row sm:gap-x-28 flex-wrap items-center rounded-md ${
               isMobileView ? "gap-3" : "gap-0"
             }`}
           >
             <div className="flex flex-col space-y-2">
               <h3 className="text-4xl font-semibold">{price}</h3>
               {/* <button onClick={sendNotes}>Go!</button> */}
+              <div className="flex flex-col h-full">
+                <h1 className=" mb-1 text-sm">
+                  {[
+                    main_data.StreetNumber,
+                    main_data.StreetName,
+                    main_data.StreetSuffix,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  {", "}
+                  {[main_data.City, main_data.Province, main_data.PostalCode]
+                    .filter((data) => !!data)
+                    .join(", ")}
+                </h1>
+                <p className="text-left text-sm tracking-wide"></p>
+              </div>
               <div className="space-x-2 block sm:hidden">
                 <button className="bg-black p-1 text-white text-xs font-bold mt-1 sm:my-0 w-fit-content rounded-md">
                   <TimeAgo
@@ -92,7 +108,7 @@ const PropertyPage = ({ main_data }) => {
               </div>
 
               <div className="rounded-md flex items-center">
-                <div className="flex justify-content-center align-items-center gap-1 text-sm font-semibold text-gray-700">
+                <div className="flex justify-content-center align-items-center gap-1 text-sm text-gray-700">
                   <img
                     src="/property-page-img/bedrooms.svg"
                     alt="bedrooms"
@@ -100,10 +116,8 @@ const PropertyPage = ({ main_data }) => {
                   />{" "}
                   {main_data.BedroomsTotal} Bedroom
                 </div>
-                <span className="text-sm font-semibold text-gray-700 mx-1">
-                  |
-                </span>
-                <div className="flex justify-content-center align-items-center gap-1 text-sm font-semibold text-gray-700">
+                <span className="text-sm text-gray-700 mx-1">|</span>
+                <div className="flex justify-content-center align-items-center gap-1 text-sm text-gray-700">
                   <img
                     src="/property-page-img/bathrooms.svg"
                     alt="washrooms"
@@ -113,10 +127,8 @@ const PropertyPage = ({ main_data }) => {
                 </div>
                 {main_data.GarageParkingSpaces && (
                   <>
-                    <span className="text-sm font-semibold text-gray-700">
-                      &nbsp;|&nbsp;
-                    </span>
-                    <div className="flex justify-content-center align-items-center gap-1 text-sm font-semibold text-gray-700 ">
+                    <span className="text-sm text-gray-700">&nbsp;|&nbsp;</span>
+                    <div className="flex justify-content-center align-items-center gap-1 text-sm text-gray-700 ">
                       <img
                         src="/property-page-img/garage.svg"
                         alt="garages"
@@ -127,30 +139,14 @@ const PropertyPage = ({ main_data }) => {
                   </>
                 )}
               </div>
-              <p className="card-subtitle my-1 font-normal text-lg">
+              <p className="card-subtitle my-1 font-normal text-sm">
                 MLS - #{main_data.ListingKey}{" "}
               </p>
               <h1 className="vmain-title">
-                <div className="uppercase bannerSection text-lg">
+                <div className="uppercase bannerSection text-sm">
                   {main_data.TransactionType}
                 </div>
               </h1>
-            </div>
-            <div className="flex flex-col h-full">
-              <h1 className="font-semibold mb-1 text-2xl">
-                {[
-                  main_data.StreetNumber,
-                  main_data.StreetName,
-                  main_data.StreetSuffix,
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-              </h1>
-              <p className="text-left text-gray-600 tracking-wide">
-                {[main_data.City, main_data.Province, main_data.PostalCode]
-                  .filter((data) => !!data)
-                  .join(",")}
-              </p>
             </div>
           </div>
         </div>
@@ -162,7 +158,7 @@ const PropertyPage = ({ main_data }) => {
         {main_data?.Extras && (
           <div className={`${isMobileView ? "pt-4 pb-4" : "pt-4 pb-4"}`}>
             <div className="col-md-12 px-0">
-              <div className="container bg-very-light-gray rounded-md p-4 border-0">
+              <div className="container rounded-md p-4 border-0">
                 <h2 className="font-bold text-xl sm:text-xl">Extras</h2>
                 <div className="flex flex-grid text-lg py-1 leading-8">
                   {main_data.Extras}

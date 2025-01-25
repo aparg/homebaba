@@ -86,7 +86,7 @@ export default function CompactMortgageCalculator({
       }  bg-white rounded-lg overflow-hidden sm:mb-20`}
     >
       <div className="">
-        <h2 className={`font-extrabold pb-3 text-2xl sm:text-4xl`}>
+        <h2 className={`font-semibold pb-3 text-2xl sm:text-3xl`}>
           Mortgage Calculator
         </h2>
         <p

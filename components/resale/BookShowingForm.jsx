@@ -30,46 +30,43 @@ const BookShowingForm = ({ address }) => {
             className="object-cover w-full h-full"
           />
         </div> */}
-        <div className="w-full sm:mx-2 p-4 flex flex-col justify-center items-center">
+        <div className="w-full px-5 py-8 flex flex-col justify-center items-center">
           {/**Schedule a viewing form */}
           <section className="w-full flex flex-row justify-between">
-            <div className="flex flex-row space-x-2 items-center">
+            <div className="flex flex-row space-x-4 items-center">
               {/* <Image width={20} height={20} /> */}
               {/* <Avatar className="w-12 h-12 bg-white" /> */}
               <div className="bg-white rounded-full">
-                <img
-                  src="/icons/avatar.webp"
-                  className="w-12 h-12 rounded-full"
-                />
+                <img src="/contact-form.png" className="w-14 h-12 " />
               </div>
-              <div className="flex flex-col space-y-2 text-lg font-semibold">
+              <div className="flex flex-col space-y-0 text-2xl font-semibold">
                 {/* John Doe */}
-                <button className="border-2 border-gray-600 rounded-md px-1 py-[0.15rem] uppercase tracking-wide text-xs">
+                {/* <button className="border-2 border-gray-600 rounded-md px-1 py-[0.15rem] uppercase tracking-wide text-xs">
                   Agent
-                </button>
+                </button> */}
+                <p>Contact our Agent</p>
+                <div className="flex items-center flex-row">
+                  <span className="text-xs sm:text-sm font-bold">homebaba</span>
+                  <Image
+                    src="/maple-leaf.svg"
+                    alt="Maple Leaf Icon for Logo"
+                    width={12}
+                    height={12}
+                    className="hidden md:block"
+                  />
+                  <Image
+                    src="/maple-leaf.svg"
+                    alt="Maple Leaf Icon for Logo"
+                    width={15}
+                    height={15}
+                    className="block md:hidden"
+                  />
+                </div>
               </div>
-            </div>
-
-            <div className="flex items-center flex-row">
-              <span className="text-xs sm:text-sm font-bold">homebaba</span>
-              <Image
-                src="/maple-leaf.svg"
-                alt="Maple Leaf Icon for Logo"
-                width={12}
-                height={12}
-                className="hidden md:block"
-              />
-              <Image
-                src="/maple-leaf.svg"
-                alt="Maple Leaf Icon for Logo"
-                width={15}
-                height={15}
-                className="block md:hidden"
-              />
             </div>
           </section>
 
-          <Dialog>
+          {/* <Dialog>
             <div className="p-4 rounded-lg flex flex-col space-y-4 justify-center">
               <p className="flex justify-start space-x-3">
                 <CalendarDays />{" "}
@@ -94,8 +91,8 @@ const BookShowingForm = ({ address }) => {
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
-          </Dialog>
-
+          </Dialog> */}
+          <DateSelector showBookingType={false} address={address} />
           {/* <span className="my-4">{address}</span> */}
         </div>
       </div>

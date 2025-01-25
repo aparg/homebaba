@@ -5,7 +5,7 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 const FAQ = ({ main_data }) => {
   return (
     <>
-      <h2 className="font-extrabold pb-3 text-2xl sm:text-4xl mb-4">
+      <h2 className="font-semibold pb-3 text-2xl sm:text-4xl mb-4">
         Some information about this property - {main_data?.Street}{" "}
         {main_data.StreetName} {main_data.StreetSuffix}
       </h2>

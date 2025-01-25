@@ -47,6 +47,13 @@ const page = async ({ params }) => {
     formattedSlug,
     main_data?.PropertyType
   );
+  const oldSoldData = await getSalesData(
+    INITIAL_OFFSET,
+    INITIAL_LIMIT,
+    formattedSlug,
+    main_data?.PropertyType,
+    true
+  );
 
   // const statsValue = await fetchStatsFromMLS({
   //   listingType: main_data?.PropertySubType,
@@ -68,7 +75,7 @@ const page = async ({ params }) => {
     { label: "Ontario", href: "/ontario" },
     { label: formattedSlug, href: generateURL({ cityVal: cityValue }) },
     {
-      label: `${main_data.TransactionType} (${propertyTypeName || ""})`,
+      label: `${propertyTypeName || ""} ${main_data.TransactionType} `,
       href: generateURL({
         cityVal: cityValue,
         saleLeaseVal: main_data?.TransactionType?.toLowerCase(),
@@ -95,7 +102,7 @@ const page = async ({ params }) => {
   // const notes = await getNotes();
   return (
     <>
-      <div className="flex justify-center min-[2000px]:max-w-[68%] mx-auto">
+      <div className="flex justify-center min-[2000px]:max-w-[65%] mx-auto">
         <div>
           <script
             key={main_data.ListingKey}
@@ -126,8 +133,8 @@ const page = async ({ params }) => {
               {/* Carousel is only for mobile. */}
               <Carousel urls={imageURLs} />
               <div className=" w-full flex justify-center pt-0 sm:pt-4 relative">
-                <div className="grid sm:grid-cols-8 grid-cols-1 justify-between sm:justify-between w-full sm:gap-x-6 gap-y-12 sm:gap-y-0 relative">
-                  <div className={`sm:col-span-6 col-span-4 col-md-8 `}>
+                <div className="grid sm:grid-cols-9 grid-cols-1 justify-between sm:justify-between w-full sm:gap-x-8 gap-y-12 sm:gap-y-0 relative max-w-[65%]">
+                  <div className={`sm:col-span-6 col-span-4 col-md-8`}>
                     <PropertyPage {...{ main_data }} />
 
                     <BookingDate bannerImage={imageURLs[0]} />
@@ -140,18 +147,31 @@ const page = async ({ params }) => {
                   </div>
 
                   <div
-                    className="sm:col-span-2 col-span-2 relative"
+                    className="sm:col-span-3 col-span-2 relative"
                     id="contact"
                   >
                     <BookShowingForm
                       address={address + `, ${main_data?.City}, Ontario`}
                     ></BookShowingForm>
                   </div>
-                  <div className="mt-24 mb-10 col-span-4">
+                  <div className="mt-24 mb-10 col-span-7">
                     <FAQ main_data={main_data} />
                   </div>
                 </div>
               </div>
+              {
+                <section className="additonal__listing w-full mx-auto mt-24">
+                  <PropertyDisplaySection
+                    title={`Recently Sold Homes in ${
+                      main_data?.City || "Ontario"
+                    }`}
+                    subtitle={`Check out recently sold properties. Listings updated daily`}
+                    exploreAllLink={"#"}
+                  >
+                    <Slider data={oldSoldData} type="resale" />
+                  </PropertyDisplaySection>
+                </section>
+              }
               {formattedSlug && newSalesData?.length > 0 && (
                 <section className="additonal__listing w-full mx-auto mt-24">
                   <PropertyDisplaySection

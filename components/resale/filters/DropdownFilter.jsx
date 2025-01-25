@@ -99,9 +99,17 @@ const CustomDropdown = ({
       >
         <span className="truncate">{label()}</span>
         {optionSelected ? (
-          <div className="pl-3" onClick={() => clearFilter(name)}>
+          <Link
+            href={generateURL({
+              cityVal: city,
+
+              saleLeaseVal: saleLease,
+            })}
+            className="pl-3"
+            onClick={() => clearFilter(name)}
+          >
             <X className="w-5 h-5" />
-          </div>
+          </Link>
         ) : (
           <FaChevronDown
             size={10}

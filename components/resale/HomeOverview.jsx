@@ -22,7 +22,7 @@ const HomeOverview = ({ main_data }) => {
   };
   return (
     <div className={`${isMobileView ? "pt-4 pb-4 mt-12" : "mt-12 pt-4 pb-4"}`}>
-      <div className="p-4 rounded-md bg-very-light-gray  border-0">
+      <div className="rounded-md border-0">
         <h2 className="font-semibold pb-3 text-2xl sm:text-3xl">
           Home Overview
         </h2>
@@ -32,7 +32,7 @@ const HomeOverview = ({ main_data }) => {
           }`}
         >
           <div className="col-span-1 md:col-span-1 border-b border-gray-200 py-2 md:py-3 pr-0">
-            <p className="font-bold text-black">Last check for updates</p>
+            <p className=" text-black">Last check for updates</p>
           </div>
           <div className="col-span-1 md:col-span-1 border-b border-gray-200 py-2 md:py-3 pl-0">
             <p className="text-black">
@@ -43,7 +43,7 @@ const HomeOverview = ({ main_data }) => {
           </div>
 
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Virtual tour</p>
+            <p className="cardd-subtitle_bg-black ">Virtual tour</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
@@ -60,9 +60,7 @@ const HomeOverview = ({ main_data }) => {
           }`}
         >
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">
-              Basement information
-            </p>
+            <p className="cardd-subtitle_bg-black ">Basement information</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
@@ -73,7 +71,7 @@ const HomeOverview = ({ main_data }) => {
           </div>
 
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Building size</p>
+            <p className="cardd-subtitle_bg-black ">Building size</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
@@ -88,7 +86,7 @@ const HomeOverview = ({ main_data }) => {
           }`}
         >
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Status</p>
+            <p className="cardd-subtitle_bg-black ">Status</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
@@ -96,9 +94,7 @@ const HomeOverview = ({ main_data }) => {
             </p>
           </div>
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">
-              Property sub type
-            </p>
+            <p className="cardd-subtitle_bg-black ">Property sub type</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
@@ -113,13 +109,13 @@ const HomeOverview = ({ main_data }) => {
           }`}
         >
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Maintenance fee</p>
+            <p className="cardd-subtitle_bg-black ">Maintenance fee</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">{AssociationFee}</p>
           </div>
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Year built</p>
+            <p className="cardd-subtitle_bg-black ">Year built</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
@@ -133,16 +129,14 @@ const HomeOverview = ({ main_data }) => {
           id="collapseExample"
         >
           {/* Interior */}
-          <h5 className="py-2 font-bold pt-5">Interior</h5>
+          <h5 className="py-2  pt-5">Interior</h5>
           <div
             className={`grid grid-cols-2  md:grid-cols-4 w-100 ${
               isMobileView ? "flex-wrap" : "flex-nowrap "
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Total bathrooms
-              </p>
+              <p className="cardd-subtitle_bg-black ">Total bathrooms</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -150,7 +144,7 @@ const HomeOverview = ({ main_data }) => {
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Full baths</p>
+              <p className="cardd-subtitle_bg-black ">Full baths</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -165,7 +159,7 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
+              <p className="cardd-subtitle_bg-black ">
                 Number of above grade bedrooms
               </p>
             </div>
@@ -175,9 +169,7 @@ const HomeOverview = ({ main_data }) => {
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Number of rooms
-              </p>
+              <p className="cardd-subtitle_bg-black ">Number of rooms</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -193,9 +185,7 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Family room available
-              </p>
+              <p className="cardd-subtitle_bg-black ">Family room available</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -203,9 +193,7 @@ const HomeOverview = ({ main_data }) => {
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Laundry information
-              </p>
+              <p className="cardd-subtitle_bg-black ">Laundry information</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -215,24 +203,20 @@ const HomeOverview = ({ main_data }) => {
           </div>
 
           {/* Exterior */}
-          <h5 className="py-2 font-bold pt-5">Exterior</h5>
+          <h5 className="py-2  pt-5">Exterior</h5>
           <div
             className={`grid grid-cols-2  grid-cols-md-4 w-100 ${
               isMobileView ? "flex-wrap" : "flex-nowrap "
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Construction materials
-              </p>
+              <p className="cardd-subtitle_bg-black ">Construction materials</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data.Exterior1}</p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Other structures
-              </p>
+              <p className="cardd-subtitle_bg-black ">Other structures</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -247,9 +231,7 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Total garage spaces
-              </p>
+              <p className="cardd-subtitle_bg-black ">Total garage spaces</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -257,9 +239,7 @@ const HomeOverview = ({ main_data }) => {
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Number parking spaces
-              </p>
+              <p className="cardd-subtitle_bg-black ">Number parking spaces</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -274,17 +254,13 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Garage features
-              </p>
+              <p className="cardd-subtitle_bg-black ">Garage features</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data.GarageType}</p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Has basement (y/n)
-              </p>
+              <p className="cardd-subtitle_bg-black ">Has basement (y/n)</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -299,9 +275,7 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Has garage (y/n)
-              </p>
+              <p className="cardd-subtitle_bg-black ">Has garage (y/n)</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -309,7 +283,7 @@ const HomeOverview = ({ main_data }) => {
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Drive</p>
+              <p className="cardd-subtitle_bg-black ">Drive</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data.Drive}</p>
@@ -317,14 +291,14 @@ const HomeOverview = ({ main_data }) => {
           </div>
 
           {/* Amenities / Utilities */}
-          <h5 className="py-2 font-bold pt-5">Amenities / Utilities</h5>
+          <h5 className="py-2  pt-5">Amenities / Utilities</h5>
           <div
             className={`grid grid-cols-2 md:grid-cols-4 w-100 ${
               isMobileView ? "flex-wrap" : "flex-nowrap "
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Cooling</p>
+              <p className="cardd-subtitle_bg-black ">Cooling</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -332,7 +306,7 @@ const HomeOverview = ({ main_data }) => {
               </p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Heat source</p>
+              <p className="cardd-subtitle_bg-black ">Heat source</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data?.HeatSource}</p>
@@ -344,13 +318,13 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Heat type</p>
+              <p className="cardd-subtitle_bg-black ">Heat type</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data?.HeatType}</p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Sewers</p>
+              <p className="cardd-subtitle_bg-black ">Sewers</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data?.Sewers}</p>
@@ -358,20 +332,20 @@ const HomeOverview = ({ main_data }) => {
           </div>
 
           {/* Location */}
-          <h5 className="py-2 font-bold pt-5">Location</h5>
+          <h5 className="py-2  pt-5">Location</h5>
           <div
             className={`grid grid-cols-2  md:grid-cols-4 w-100 ${
               isMobileView ? "flex-wrap" : "flex-nowrap "
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Water source</p>
+              <p className="cardd-subtitle_bg-black ">Water source</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data.Water}</p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Area</p>
+              <p className="cardd-subtitle_bg-black ">Area</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data.Area}</p>
@@ -383,15 +357,13 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Community</p>
+              <p className="cardd-subtitle_bg-black ">Community</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">{main_data.Community}</p>
             </div>
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">
-                Community features
-              </p>
+              <p className="cardd-subtitle_bg-black ">Community features</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -405,7 +377,7 @@ const HomeOverview = ({ main_data }) => {
             }`}
           >
             <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-              <p className="cardd-subtitle_bg-black font-bold">Directions</p>
+              <p className="cardd-subtitle_bg-black ">Directions</p>
             </div>
             <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
               <p className="cardd-subtitle_bg-black">
@@ -421,9 +393,9 @@ const HomeOverview = ({ main_data }) => {
             </div> */}
         <button
           onClick={() => setCollapse(!collapse)}
-          className="bg-black font-bold px-2 border-2 border-black py-1 text-white rounded-lg hover:text-black hover:bg-gray-200 focus:outline-none transition-colors duration-200 sm:my-2 mt-2 mb-4 "
+          className="mt-2 py-[3px] font-semibold rounded-lg  sm:my-2 text-black hover:text-[#e6a6d7] mb-4 hover:underline"
         >
-          See {collapse ? "More ↓" : "Less ↑"}
+          See {collapse ? "More" : "Less"}
         </button>
       </div>
     </div>

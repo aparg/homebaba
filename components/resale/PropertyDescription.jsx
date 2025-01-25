@@ -32,7 +32,7 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
 
   return (
     <div className={`${isMobileView ? "pt-4 mt-12" : "mt-12 pt-4"}`}>
-      <div className="border-0 rounded-md bg-very-light-gray p-3 sm:p-4">
+      <div className="border-0 rounded-md">
         <div className="font-semibold text-2xl sm:text-3xl">
           Property Description <br />
           <h2 className="font-normal text-lg sm:text-xl sm:mt-2 mb-1 sm:mb-3">
@@ -60,17 +60,17 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
           }`}
         >
           <div className="col-span-1 md:col-span-1 border-b border-gray-200 py-2 md:py-3 pr-0">
-            <p className="font-bold text-black">Property type</p>
+            <p className=" text-black">Property type</p>
           </div>
           <div className="col-span-1 md:col-span-1 border-b border-gray-200 py-2 md:py-3 pl-0">
             <p className="text-black">{main_data.PropertySubType}</p>
           </div>
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 border-sm py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Lot size</p>
+            <p className="cardd-subtitle_bg-black ">Lot size</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 border-sm py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
-              {main_data.LotSizeRangeAcres} acres
+              {main_data.LotSizeRangeAcres || "N/A"} acres
             </p>
           </div>
         </div>
@@ -80,17 +80,19 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
           }`}
         >
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Style </p>
-          </div>
-          <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
-            <p className="cardd-subtitle_bg-black">{main_data.Style}</p>
-          </div>
-          <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Approx. Area</p>
+            <p className="cardd-subtitle_bg-black ">Style </p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
-              {main_data.ApproxSquareFootage} Sqft
+              {main_data.ArchitecturalStyle || "N/A"}
+            </p>
+          </div>
+          <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
+            <p className="cardd-subtitle_bg-black ">Approx. Area</p>
+          </div>
+          <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
+            <p className="cardd-subtitle_bg-black">
+              {main_data.BuildingAreaTotal || "N/A"} Sqft
             </p>
           </div>
         </div>
@@ -100,13 +102,13 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
           }`}
         >
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Taxes</p>
+            <p className="cardd-subtitle_bg-black ">Taxes</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">{TaxAnnualAmount}</p>
           </div>
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Tax year</p>
+            <p className="cardd-subtitle_bg-black ">Tax year</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">{main_data.TaxYear}</p>
@@ -118,7 +120,7 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
           }`}
         >
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Garage spaces</p>
+            <p className="cardd-subtitle_bg-black ">Garage spaces</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">
@@ -126,7 +128,7 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
             </p>
           </div>
           <div className="col-7 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pr-0">
-            <p className="cardd-subtitle_bg-black font-bold">Mls® #</p>
+            <p className="cardd-subtitle_bg-black ">Mls® #</p>
           </div>
           <div className="col-5 col-md border-b-[0.1px] border-gray-200 py-2 md:py-3 pl-0">
             <p className="cardd-subtitle_bg-black">{main_data.ListingKey}</p>
@@ -134,7 +136,7 @@ const PropertyDescription = ({ main_data, fullAddress }) => {
         </div>
         {isOverflowing && (
           <button
-            className="mt-2 px-2 border-2 border-black py-[3px] text-white font-semibold rounded-lg bg-black hover:text-black hover:bg-gray-200 focus:outline-none transition-colors duration-200 sm:my-2 mt-2 mb-4"
+            className="mt-2 px-2 border-2 py-[3px] font-semibold rounded-lg  sm:my-2 text-[#fcdaf4] mb-4"
             onClick={toggleShowMore}
           >
             {showMoreDesc ? "See Less ↑" : "See More ↓"}

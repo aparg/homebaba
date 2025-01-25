@@ -125,7 +125,7 @@ const BookingDate = ({ bannerImage }) => {
         </div>
         <div className="w-full sm:w-1/2 sm:mx-2 p-4 flex flex-col justify-center items-center">
           {/**Schedule a viewing form */}
-          <h1 className="font-bold text-3xl my-2 text-center">
+          <h1 className="font-semibold text-3xl my-2 text-center">
             Schedule a viewing
           </h1>
 
