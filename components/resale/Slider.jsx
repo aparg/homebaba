@@ -1,11 +1,15 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 //ICONS
 // import PropertyCard from "./PropertyCard";
 import useDeviceView from "@/helpers/useDeviceView";
 import ResaleCard from "./ResaleCard";
 // import PreconstructionCard from "./PreconstructionCard";
 import CreateSchema from "@/helpers/CreateSchema";
+import { Skeleton } from "../ui/skeleton";
+
+import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
+import SignInVOW from "./SignInVOW";
 
 // type: resale/commercial
 // data: array of json properties
@@ -85,6 +89,50 @@ const Slider = ({ data, type }) => {
               </div>
             );
           }
+        })}
+      </div>
+    </div>
+  );
+};
+
+export const SliderSkeleton = () => {
+  return (
+    <div className="relative flex justify-center">
+      {/* <Skeleton className="btns flex justify-between">
+        <button
+          className=" absolute start-0"
+          title="scroll left"
+          onClick={slideLeft}
+        >
+          <SlArrowLeft size={16} color="black" />
+        </button>
+        <button
+          className=" absolute end-0"
+          title="scroll right"
+          onClick={slideRight}
+        >
+          <SlArrowRight size={16} color="black" />
+        </button>
+      </Skeleton> */}
+      <div
+        className={`w-full grid grid-rows-1 grid-cols-2 sm:grid-cols-4 overflow-x-hidden grid-nowrap justify-between sm:py-3 gap-x-4 auto-rows-[minmax(100px,_auto)]`}
+      >
+        {[...Array(4)].map((_, index) => {
+          //manual removal, to be removed later
+          return (
+            <div className="my-2 sm:my-0 row-auto" key={index}>
+              {
+                <>
+                  <Skeleton className="h-80 w-18 flex justify-center items-center">
+                    <SignInVOW />
+                  </Skeleton>
+                  <Skeleton className={`w-36 h-4 mt-2`}></Skeleton>
+                  <Skeleton className={`w-18 h-4 mt-2`}></Skeleton>
+                  <Skeleton className={`w-18 h-4 mt-2`}></Skeleton>
+                </>
+              }
+            </div>
+          );
         })}
       </div>
     </div>

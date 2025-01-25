@@ -27,7 +27,6 @@ export const getPropertiesCount = async ({ propertyType, city, saleLease }) => {
     },
     // cache: "no-store",
   };
-  console.log(url);
   const response = await fetch(url, options);
   const jsonResponse = await response.json();
   return jsonResponse;
@@ -152,7 +151,6 @@ export const getFilteredRetsData = async (queryParams) => {
       },
       // cache: "no-store",
     };
-    console.log(url);
     const res = await fetch(url, options);
 
     const data = await res.json();

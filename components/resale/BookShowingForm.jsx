@@ -44,7 +44,7 @@ const BookShowingForm = ({ address }) => {
                 {/* <button className="border-2 border-gray-600 rounded-md px-1 py-[0.15rem] uppercase tracking-wide text-xs">
                   Agent
                 </button> */}
-                <p>Contact our Agent</p>
+                <p>Contact Agent</p>
                 <div className="flex items-center flex-row">
                   <span className="text-xs sm:text-sm font-bold">homebaba</span>
                   <Image

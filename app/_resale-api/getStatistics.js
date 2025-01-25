@@ -30,9 +30,6 @@ export const getStatistics = async ({ city, propertyType, sold = false }) => {
     if (propertyType) {
       filterClause += ` and PropertySubType eq '${propertyType}'`;
     }
-    console.log(
-      `${BASE_URL}/odata/Property?$count=true&$filter=${filterClause}&$select=ListPrice`
-    );
     const response = await fetch(
       `${BASE_URL}/odata/Property?$count=true&$filter=${filterClause}&$select=ListPrice`,
       {

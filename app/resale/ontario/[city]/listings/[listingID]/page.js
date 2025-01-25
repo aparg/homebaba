@@ -15,7 +15,7 @@ import BookShowingForm from "@/components/resale/BookShowingForm";
 import PropertyPage from "@/components/resale/PropertyPage";
 import BookingDate from "@/components/resale/BookingDate";
 import FAQ from "@/components/resale/FAQ";
-import Slider from "@/components/resale/Slider";
+import Slider, { SliderSkeleton } from "@/components/resale/Slider";
 import Breadcrumbs from "@/components/resale/Breadcrumbs";
 import CreateSchema from "@/helpers/CreateSchema";
 import { slugGenerator } from "@/helpers/slugGenerator";
@@ -26,6 +26,8 @@ import Carousel from "@/components/resale/Carousel";
 import { generateURL } from "@/helpers/generateResaleURL";
 import TimeAgo from "@/components/resale/TimeAgo";
 import { houseType } from "@/constant";
+import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
+import UnlockableCards from "@/components/resale/UnlockableCards";
 
 // import { getNotes } from "@/helpers/getNotes";
 // import { Button } from "@nextui-org/react";
@@ -99,7 +101,7 @@ const page = async ({ params }) => {
     .join(" ");
 
   const imageURLs = await getImageUrls({ MLS: main_data?.ListingKey });
-  // const notes = await getNotes();
+
   return (
     <>
       <div className="flex justify-center min-[2000px]:max-w-[65%] mx-auto">
@@ -166,9 +168,10 @@ const page = async ({ params }) => {
                       main_data?.City || "Ontario"
                     }`}
                     subtitle={`Check out recently sold properties. Listings updated daily`}
-                    exploreAllLink={"#"}
+                    exploreAllLink={null}
                   >
-                    <Slider data={oldSoldData} type="resale" />
+                    <UnlockableCards data={oldSoldData} />
+                    {/* <Slider data={oldSoldData} type="resale" /> */}
                   </PropertyDisplaySection>
                 </section>
               }
