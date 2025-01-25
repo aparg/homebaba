@@ -10,7 +10,7 @@ export const getPropertiesCount = async ({ propertyType, city, saleLease }) => {
     queryArray.push(`PropertySubType eq '${propertyType}'`);
   }
   if (city) {
-    queryArray.push(`City eq '${capitalizeFirstLetter(city)}'`);
+    queryArray.push(`contains(City,'${capitalizeFirstLetter(city)}')`);
   }
   if (saleLease) {
     queryArray.push(`TransactionType eq '${saleLease}'`);
@@ -27,6 +27,7 @@ export const getPropertiesCount = async ({ propertyType, city, saleLease }) => {
     },
     // cache: "no-store",
   };
+  console.log(url);
   const response = await fetch(url, options);
   const jsonResponse = await response.json();
   return jsonResponse;
