@@ -99,9 +99,9 @@ const CustomDropdown = ({
       >
         <span className="truncate">{label()}</span>
         {optionSelected ? (
-          <button className="pl-3" onClick={() => clearFilter(name)}>
+          <div className="pl-3" onClick={() => clearFilter(name)}>
             <X className="w-5 h-5" />
-          </button>
+          </div>
         ) : (
           <FaChevronDown
             size={10}

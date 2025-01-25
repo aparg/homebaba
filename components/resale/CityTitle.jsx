@@ -12,8 +12,8 @@ const CityTitle = async ({
     city: city,
     propertyType: Object.values(houseType).find(
       (obj) => obj.name == requiredType
-    ).value,
-    saleLease: saleLease[saleLeaseVal].name,
+    )?.value,
+    saleLease: saleLease[saleLeaseVal]?.name,
   }).then((data) => {
     const localeStringNumber = Number(data["@odata.count"])?.toLocaleString();
     const propertyCount = localeStringNumber;

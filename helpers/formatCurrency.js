@@ -1,6 +1,7 @@
 function formatCurrency(value) {
   // Check if the value is not null or undefined
-  if (value != null) {
+  console.log(value);
+  if (value && !isNaN(value)) {
     return Number(value).toLocaleString("en-US", {
       style: "currency",
       currency: "USD",

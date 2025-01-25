@@ -22,6 +22,8 @@ import Image from "next/image";
 import { FadeLoader } from "react-spinners";
 import { useClientFilter } from "@/hooks/use-client-filter";
 import { usePropertyCount } from "@/hooks/use-property-count";
+import { ChartNoAxesCombined } from "lucide-react";
+import MarketDataButton from "./MarketDataButton";
 // import formatCurrency from "@/helpers/formatCurrency";
 // import FilterSubmit from "../FilterSubmit";
 
@@ -186,6 +188,7 @@ const FiltersWithSalesList = ({
           id="filter"
         >
           <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
+          <MarketDataButton city={city} />
         </div>
 
         {loading ? (

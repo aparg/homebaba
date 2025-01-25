@@ -262,16 +262,6 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         handleFilterChange={handleFilterChange}
         filterObj={roads}
       />
-      <div
-        className={`mx-[2px] px-2 sm:px-3 h-8 border-[#b2b2b2] border-[1px] tracking-[0.01125] cursor-pointer text-nowrap flex justify-center items-center rounded-full hover:shadow-lg text-xs font-semibold
-             bg-[#fcdaf4] text-black
-             `}
-        onClick={() => handleClick(name, option)}
-        // style={{ border: "2px solid #e5e7eb" }}
-      >
-        <ChartNoAxesCombined className="w-3 h-3 mr-1" />
-        Market Data
-      </div>
     </>
   );
 };
