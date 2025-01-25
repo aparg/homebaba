@@ -61,7 +61,6 @@ const CustomDropdown = ({
 
   const optionSelected =
     selectedValues.length > 0 && selectedValues[0] !== defaultValue;
-  console.log(selectedValues);
   const label = () => {
     if (name == "priceRange") {
       return selectedValues[0] || defaultValue;
@@ -99,17 +98,22 @@ const CustomDropdown = ({
       >
         <span className="truncate">{label()}</span>
         {optionSelected ? (
-          <Link
-            href={generateURL({
-              cityVal: city,
-
-              saleLeaseVal: saleLease,
-            })}
-            className="pl-3"
-            onClick={() => clearFilter(name)}
-          >
-            <X className="w-5 h-5" />
-          </Link>
+          name == "type" ? (
+            <Link
+              href={generateURL({
+                cityVal: city,
+                saleLeaseVal: saleLease,
+                useLocalStorage: false,
+              })}
+              className="hover:pointer"
+            >
+              <X className="w-5 h-5" />
+            </Link>
+          ) : (
+            <div className="pl-3" onClick={() => clearFilter(name)}>
+              <X className="w-5 h-5" />
+            </div>
+          )
         ) : (
           <FaChevronDown
             size={10}

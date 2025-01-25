@@ -230,3 +230,10 @@ export const roads = {
   "Public Transit": "Public Transit",
   Highway: "Highway",
 };
+
+export const homeText = {
+  "Semi Detached": "Semi Detached Homes",
+  Detached: "Detached Homes",
+  "Town House": "Town Homes",
+  Condos: "Condos",
+};

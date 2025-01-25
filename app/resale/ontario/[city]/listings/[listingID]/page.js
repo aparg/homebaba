@@ -25,7 +25,7 @@ import formatCurrency from "@/helpers/formatCurrency";
 import Carousel from "@/components/resale/Carousel";
 import { generateURL } from "@/helpers/generateResaleURL";
 import TimeAgo from "@/components/resale/TimeAgo";
-import { houseType } from "@/constant";
+import { homeText, houseType } from "@/constant";
 import { isLocalStorageAvailable } from "@/helpers/checkLocalStorageAvailable";
 import UnlockableCards from "@/components/resale/UnlockableCards";
 
@@ -77,7 +77,9 @@ const page = async ({ params }) => {
     { label: "Ontario", href: "/ontario" },
     { label: formattedSlug, href: generateURL({ cityVal: cityValue }) },
     {
-      label: `${propertyTypeName || ""} ${main_data.TransactionType} `,
+      label: `${homeText[propertyTypeName] || propertyTypeName || ""} ${
+        main_data.TransactionType
+      } `,
       href: generateURL({
         cityVal: cityValue,
         saleLeaseVal: main_data?.TransactionType?.toLowerCase(),

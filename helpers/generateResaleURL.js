@@ -10,8 +10,10 @@ export const generateURL = ({
   saleLeaseVal,
   listingIDVal = null,
   embeddedSite = false,
+  useLocalStorage = true,
 }) => {
   const filterState =
+    useLocalStorage &&
     isLocalStorageAvailable() &&
     JSON.parse(localStorage.getItem("filterState"));
   const city = cityVal?.toLowerCase().replaceAll(" ", "-");
