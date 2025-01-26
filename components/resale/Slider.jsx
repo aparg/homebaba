@@ -123,9 +123,13 @@ export const SliderSkeleton = () => {
             <div className="my-2 sm:my-0 row-auto" key={index}>
               {
                 <>
-                  <Skeleton className="h-80 w-18 flex justify-center items-center">
+                  <div className="relative h-80 w-18 flex justify-center items-center">
+                    <img
+                      src="/city-images/brampton.jpg"
+                      className="object-cover blur-md"
+                    />
                     <SignInVOW />
-                  </Skeleton>
+                  </div>
                   <Skeleton className={`w-36 h-4 mt-2`}></Skeleton>
                   <Skeleton className={`w-18 h-4 mt-2`}></Skeleton>
                   <Skeleton className={`w-18 h-4 mt-2`}></Skeleton>

@@ -20,8 +20,8 @@ const SignInVOW = () => {
       );
   };
   return (
-    <Dialog>
-      <DialogTrigger className="border-black border-2 rounded-full px-3 py-1">
+    <Dialog className="">
+      <DialogTrigger className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 border-black border-2 rounded-full px-3 py-1">
         Sign in to view
       </DialogTrigger>
       <DialogDescription>
