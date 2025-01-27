@@ -91,7 +91,7 @@ const CustomDropdown = ({
             ${
               optionSelected
                 ? `bg-[#fcdaf4] text-black border-black`
-                : "border-gray-300 text-gray-700 bg-white "
+                : "border-[#b2b2b2] text-gray-700 bg-white "
             }
             hover:shadow-md transition-all text-center
           `}
@@ -127,7 +127,7 @@ const CustomDropdown = ({
       {isOpen && (
         <div
           className={`
-              min-w-[120px] sm:min-w-[150px] max-h-[300px] overflow-y-auto
+              absolute top-10 min-w-[120px] sm:min-w-[150px] max-h-[300px] overflow-y-auto
               bg-white rounded-lg shadow-lg
               border border-gray-200
               mt-2 py-2

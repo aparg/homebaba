@@ -183,12 +183,18 @@ const FiltersWithSalesList = ({
   return (
     <>
       <div className="">
-        <div
-          className="flex sticky top-[1rem] z-50 bg-white items-center w-full flex-wrap overflow-visible justify-center sm:justify-normal"
-          id="filter"
-        >
-          <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
-          <MarketDataButton city={city} />
+        <div className="sticky h-10 z-50">
+          <div
+            className="relative flex h-screen items-start w-full flex-wrap overflow-visible justify-start sm:justify-normal overflow-y-hidden overflow-x-scroll"
+            id="filter"
+          >
+            <div className="flex flex-row">
+              <Filters
+                {...{ filterState, setFilterState, fetchFilteredData }}
+              />
+              <MarketDataButton city={city} />
+            </div>
+          </div>
         </div>
 
         {loading ? (

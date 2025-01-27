@@ -168,7 +168,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
   return (
     <>
       <div
-        className={`justify-center sm:justify-start gap-0 gap-md-0 mt-2 sm:my-2 flex flex-wrap bg-white overflow-visible${
+        className={`justify-start gap-0 gap-md-0 sm:my-2 flex flex-nowrap sm:flex-wrap bg-white overflow-visible ${
           navbar
             ? `filter__scrolled mt-4 pb-2 container-fluid`
             : `top-[0px] items-center`
@@ -183,8 +183,8 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
           city={filterState.city}
           type={filterState.type}
         />
-        <div className="mx-4 flex">
-          <div className="rounded-full mx-[0.1rem]">
+        <div className="mx-4 flex items-center sm:mt-0">
+          <div className="rounded-full mx-[0.1rem] flex-items-center">
             <DropdownFilter
               options={bedCountOptions}
               defaultValue="Beds"
@@ -217,7 +217,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
               filterObj={houseType}
             />
           </div>
-          <div className="flex justify-center sm:justify-start mx-[0.1rem]">
+          <div className="relative flex justify-center sm:justify-start mx-[0.1rem]">
             <DropdownFilter
               options={
                 filterState.saleLease == saleLease.sale.name
