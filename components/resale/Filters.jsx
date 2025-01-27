@@ -166,9 +166,9 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
       : priceRangesLeaseProperties;
 
   return (
-    <>
+    <div className="bg-white flex">
       <div
-        className={`justify-start gap-0 gap-md-0 sm:my-2 flex flex-nowrap sm:flex-wrap bg-white overflow-visible ${
+        className={`justify-start gap-0 gap-md-0 sm:my-2 flex flex-nowrap bg-white overflow-visible ${
           navbar
             ? `filter__scrolled mt-4 pb-2 container-fluid`
             : `top-[0px] items-center`
@@ -262,7 +262,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
         handleFilterChange={handleFilterChange}
         filterObj={roads}
       />
-    </>
+    </div>
   );
 };
 

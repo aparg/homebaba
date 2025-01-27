@@ -182,13 +182,13 @@ const FiltersWithSalesList = ({
 
   return (
     <>
-      <div className="">
-        <div className="sticky h-10 z-50">
+      <div className="relative">
+        <div className="sticky top-16 h-12 z-50 bg-white">
           <div
             className="relative flex h-screen items-start w-full flex-wrap overflow-visible justify-start sm:justify-normal overflow-y-hidden overflow-x-scroll"
             id="filter"
           >
-            <div className="flex flex-row">
+            <div className="flex flex-row bg-white">
               <Filters
                 {...{ filterState, setFilterState, fetchFilteredData }}
               />
