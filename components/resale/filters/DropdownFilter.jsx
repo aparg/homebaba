@@ -1,9 +1,10 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useContext } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { generateURL } from "@/helpers/generateResaleURL";
 import Link from "next/link";
 import { Cross, CrossIcon, X } from "lucide-react";
+import { FilterOpenContext } from "../FilterOpenContext";
 
 const CustomDropdown = ({
   options,
@@ -17,6 +18,7 @@ const CustomDropdown = ({
   saleLease,
   filterObj,
 }) => {
+  const { setIsFilterOpen } = useContext(FilterOpenContext);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValues, setSelectedValues] = useState(
     isMulti ? [...value] : [value]
@@ -79,6 +81,10 @@ const CustomDropdown = ({
       Object.values(filterObj).find((obj) => !obj.value).value
     );
   };
+
+  useEffect(() => {
+    isOpen ? setIsFilterOpen(true) : setIsFilterOpen(false);
+  }, [isOpen]);
   return (
     <div className="inline-block" ref={dropdownRef}>
       <button

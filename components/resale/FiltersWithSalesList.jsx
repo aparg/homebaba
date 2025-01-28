@@ -1,5 +1,11 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useState,
+  createContext,
+  useContext,
+} from "react";
 
 import SalesList from "./SalesList";
 import Filters from "./Filters";
@@ -24,8 +30,11 @@ import { useClientFilter } from "@/hooks/use-client-filter";
 import { usePropertyCount } from "@/hooks/use-property-count";
 import { ChartNoAxesCombined } from "lucide-react";
 import MarketDataButton from "./MarketDataButton";
+import { FilterOpenContext } from "./FilterOpenContext";
 // import formatCurrency from "@/helpers/formatCurrency";
 // import FilterSubmit from "../FilterSubmit";
+
+// Create FilterOpen context
 
 const FiltersWithSalesList = ({
   salesListData = [],
@@ -44,6 +53,7 @@ const FiltersWithSalesList = ({
     Object.values(houseType).find((val) => val.name === requiredType)?.value ||
     houseType.all.value;
 
+  const { isFilterOpen } = useContext(FilterOpenContext);
   const initialState = {
     saleLease: saleLeaseFilterVal,
     bed: bedCount.any.value,
@@ -181,68 +191,66 @@ const FiltersWithSalesList = ({
   }, [selected]);
 
   return (
-    <>
-      <div className="relative">
-        <div className="sticky top-16 h-12 z-50 bg-white">
-          <div
-            className="relative flex h-screen items-start w-full flex-wrap overflow-visible justify-start sm:justify-normal overflow-y-hidden overflow-x-scroll"
-            id="filter"
-          >
-            <div className="flex flex-row bg-white">
-              <Filters
-                {...{ filterState, setFilterState, fetchFilteredData }}
-              />
-              <MarketDataButton city={city} />
-            </div>
+    <div className="relative">
+      <div className="sticky top-16 h-12 z-50 bg-white">
+        <div
+          className={`relative flex ${
+            isFilterOpen ? "h-screen" : "h-12"
+          } items-start w-full flex-wrap overflow-visible justify-start sm:justify-normal overflow-y-hidden overflow-x-scroll`}
+          id="filter"
+        >
+          <div className="flex flex-row bg-white">
+            <Filters {...{ filterState, setFilterState, fetchFilteredData }} />
+            <MarketDataButton city={city} />
           </div>
         </div>
-
-        {loading ? (
-          <div className="w-[20px] mx-auto">
-            <FadeLoader />
-          </div>
-        ) : salesData?.length > 0 || hotSales?.length > 0 ? (
-          <>
-            {selected === 1 && <HotListings salesData={hotSales} city={city} />}
-            <div
-              className={`${
-                isMobileView ? "pt-1" : "pt-1"
-              } grid grid-cols-2 md:grid-cols-4 xs:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-0 gap-x-2 gap-y-4 md:gap-x-2 sm:gap-y-[40px]`}
-            >
-              <SalesList
-                {...{
-                  city,
-                  INITIAL_LIMIT,
-                  salesData: remainingSales,
-                  setSalesData,
-                  offset,
-                  setOffset,
-                  filterState,
-                }}
-              />
-            </div>
-            <div className="flex justify-center mt-10">
-              <PageSelector
-                numberOfPages={40}
-                batchSize={3}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            </div>
-          </>
-        ) : (
-          <div className="fs-4 text-center flex w-100 flex-col items-center">
-            <Image
-              src="/no-record-found.jpg"
-              width="500"
-              height="500"
-              alt="no record found"
-            />
-            <p>No Records Found</p>
-          </div>
-        )}
       </div>
-    </>
+
+      {loading ? (
+        <div className="w-[20px] mx-auto">
+          <FadeLoader />
+        </div>
+      ) : salesData?.length > 0 || hotSales?.length > 0 ? (
+        <>
+          {selected === 1 && <HotListings salesData={hotSales} city={city} />}
+          <div
+            className={`${
+              isMobileView ? "pt-1" : "pt-1"
+            } grid grid-cols-2 md:grid-cols-4 xs:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-0 gap-x-2 gap-y-4 md:gap-x-2 sm:gap-y-[40px]`}
+          >
+            <SalesList
+              {...{
+                city,
+                INITIAL_LIMIT,
+                salesData: remainingSales,
+                setSalesData,
+                offset,
+                setOffset,
+                filterState,
+              }}
+            />
+          </div>
+          <div className="flex justify-center mt-10">
+            <PageSelector
+              numberOfPages={40}
+              batchSize={3}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          </div>
+        </>
+      ) : (
+        <div className="fs-4 text-center flex w-100 flex-col items-center">
+          <Image
+            src="/no-record-found.jpg"
+            width="500"
+            height="500"
+            alt="no record found"
+          />
+          <p>No Records Found</p>
+        </div>
+      )}
+    </div>
   );
 };
 
